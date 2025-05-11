@@ -9,7 +9,7 @@ const Home = () => {
   const handleSetCookie = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:1618/", {
+      const response = await fetch("https://api-pietech.onrender.com", {
         credentials: "include",
       });
       const getData = await response.json();
