@@ -1,0 +1,48 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: .2rem;
+}
+
+/* Hero styles ---> */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Video covers entire container */
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Light gray transparent overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 200, 200, 0.2); /* soft gray */
+  z-index: -1;
+}
+
+/* Foreground content styling */
+.heroContent {
+  position: relative;
+  z-index: 1;
+  color: #111;
+  text-align: center;
+  padding-top: 30vh;
+  font-family: sans-serif;
+}
+
