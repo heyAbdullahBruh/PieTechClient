@@ -185,10 +185,6 @@
   }
 }
 
-
-/* COmpnonents about slider ---> */
-
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -203,6 +199,101 @@
   }
 }
 
+/* COmpnonents about slider ---> */
+
+.homeAbt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.abtSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: #c7ffec1a;
+}
+
+.hAbtImg,
+.hAbtDesc {
+  flex: 2;
+}
+
+.hAbtDesc {
+  padding: 2rem;
+  opacity: .8;
+}
+
+.hAbtDesc ul {
+  list-style-type: none;
+}
+
+.hAbtDesc li {
+  color: #e3f1ff;
+}
+
+.hAbtImg img {
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+}
+
+.whyUsSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  padding: 1rem;
+  background-color: #c7ffec1a;
+}
+
+.wuImg,
+.wuDesc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wuImg img{
+  width: 90%;
+  height: auto;
+}
+
+.wuDesc ul {
+  list-style-type: none;
+}
+.wuDesc ul li{
+  color: #c6fffa;
+  font-size: .9rem;
+  font-weight: lighter;
+}
+.wuDesc ul strong{
+  color: #05ee8d;
+  font-weight: 800;
+}
+
+.knowMoreBtn button{
+  padding: .5rem 1rem;
+  border-radius: 2rem;
+  background-color: #00ff80;
+  color: #023a35;
+  font-weight: 800;
+  transition: all ease-in-out 0.3s;
+  &:hover{
+    background: none;
+    color: #bddcff;
+  }
+}
 
 
 @media (width<=800px) {
