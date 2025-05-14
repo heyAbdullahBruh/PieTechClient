@@ -45,6 +45,7 @@ const Contact = () => {
     // TODO: Send both `msgData` and `captchaValue` to backend API for further processing
   };
 
+  // console.log();
   return (
     <aside className={styles.contact}>
       <section className={styles.contactHead}>
@@ -143,7 +144,7 @@ const Contact = () => {
 
             {/* reCAPTCHA */}
             <ReCAPTCHA
-              sitekey="6Ldz_TgrAAAAAGn5B06uIzFEhmk2VVpgPLydH6Yw"
+              sitekey={process.env.NEXT_PUBLIC_GOOGLE_APP_KEY}
               onChange={(token) => setCaptchaValue(token)}
             />
 
