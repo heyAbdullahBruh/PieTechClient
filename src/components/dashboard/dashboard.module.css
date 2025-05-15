@@ -91,7 +91,7 @@
     }
 
     &:disabled {
-        background: none;
+        background: #4f5753e1;
         color: white;
 
         &:hover {
