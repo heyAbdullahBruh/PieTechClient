@@ -30,7 +30,7 @@ export default async function DashBoardLayout({ children }) {
           <>
             <DashboardNav />
 
-            <main>{children}</main>
+            <main style={{marginTop:"7rem"}}>{children}</main>
           </>
         ) : (
           <DashboardAuth />

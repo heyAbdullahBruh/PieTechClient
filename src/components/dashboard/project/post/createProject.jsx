@@ -1,0 +1,166 @@
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import styles from "../project.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { useFilePreview } from "@/customHooks/UseFileReader";
+import { api } from "@/data/api";
+import { useDashAuth } from "../../DashCotext/DashContext";
+import SmallLoad from "@/components/smallLaoding/smallLoad";
+
+const CreateProject = ({ open, setOpen }) => {
+  const [projData, setProjData] = useState({
+    title: "",
+    details: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const { accessToken } = useDashAuth();
+
+  const colletProjData = (e) => {
+    setProjData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+  const { title, details } = projData;
+  /*Collect Thumbnail image */
+  const [thumb, setThumb] = useState([]);
+  const [thumbImg, setThumbImg] = useState("");
+
+  const handleThumbInp = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setThumb(file);
+    const thumbUrl = URL.createObjectURL(file);
+    setThumbImg(thumbUrl);
+  };
+  useEffect(() => {
+    return () => {
+      if (thumbImg) {
+        URL.revokeObjectURL(thumbImg);
+      }
+    };
+  }, [thumbImg]);
+
+  /*Collect gallray image */
+  const {
+    files: gallery,
+    addFiles: addGalleryImages,
+    removeFile: removeGalleryImage,
+  } = useFilePreview();
+
+  /* @Handle Upload Pojects ---> */
+
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("details", details);
+  formData.append("thumbnail", thumb);
+  gallery.forEach((img) => {
+    formData.append("gallary", img.file);
+  });
+
+  const handleUploadProj = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await fetch(`${api}/project/add`, {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.error("Upload failed", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.createProj} onClick={() => setOpen(false)}>
+      <div className={styles.closeBtn}>
+        <button onClick={() => setOpen(false)}>❌Close</button>
+      </div>
+
+      <div className={styles.createForm} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.scrollWrap}>
+          <form onSubmit={handleUploadProj}>
+            <label id={styles.pTitle}>
+              <textarea
+                placeholder="Project Title"
+                name="title"
+                value={title}
+                onChange={colletProjData}
+              ></textarea>
+            </label>
+            <label
+              className={styles.thumbnailLabel}
+              style={{ backgroundImage: thumbImg && `url(${thumbImg})` }}
+            >
+              <span>
+                <FontAwesomeIcon icon={faPlus} /> Thumbnail
+              </span>
+              <input
+                type="file"
+                name="thumbnail"
+                accept="image/*"
+                className={styles.thumbnailInput}
+                onChange={handleThumbInp}
+              />
+            </label>
+            <div className={styles.pGallary}>
+              <label>
+                <span>Project Gallay : </span>
+                {/* <br /> */}
+
+                <input
+                  type="file"
+                  name="gallary"
+                  accept="image/*"
+                  onChange={(e) => addGalleryImages(e.target.files)}
+                  multiple
+                />
+              </label>
+              {gallery && (
+                <div className={styles.imagePreview}>
+                  {gallery?.map((img, idx) => (
+                    <div key={img?.id}>
+                      <button
+                        type="button"
+                        className={styles.cutImg}
+                        onClick={() => removeGalleryImage(img?.id)}
+                      >
+                        ❌
+                      </button>
+                      <img src={img?.url} alt={`uploaded-${idx}`} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <label id={styles.pDesc}>
+              <textarea
+                name="details"
+                placeholder="Project Details"
+                value={details}
+                onChange={colletProjData}
+              ></textarea>
+            </label>
+            <button type="submit" disabled={loading}>
+              {loading ? <SmallLoad /> : "Upload"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CreateProject;
