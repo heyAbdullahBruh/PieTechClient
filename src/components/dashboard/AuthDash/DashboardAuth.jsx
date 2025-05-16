@@ -3,13 +3,23 @@ import { useState } from "react";
 import styles from "../dashboard.module.css";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
 import { api } from "@/data/api";
+import { useDashAuth } from "../DashCotext/DashContext";
+import ToastP from "@/components/popupToast/ToastP";
 
 const DashboardAuth = () => {
+  const { setAccessToken } = useDashAuth();
+
   const [authData, setAuthData] = useState({
     email: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
+
+  const [popInfo, setPopInfo] = useState({
+    trigger: null,
+    type: null,
+    message: null,
+  });
 
   const handleInpChange = (e) => {
     setAuthData((prev) => {
@@ -36,8 +46,20 @@ const DashboardAuth = () => {
       });
 
       const data = await response.json();
-      console.log(data);
 
+      setPopInfo({
+        trigger: Date.now(),
+        type: data?.success,
+        message: data?.message,
+      });
+
+      if (data?.success) {
+        setTimeout(() => {
+          setAccessToken(data?.token);
+          window.location.reload();
+        }, 2000);
+      }
+      // console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -67,6 +89,7 @@ const DashboardAuth = () => {
           {loading ? <SmallLoad /> : "Try To Auth"}
         </button>
       </form>
+      <ToastP popInfo={popInfo} />
     </aside>
   );
 };
