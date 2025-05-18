@@ -7,9 +7,8 @@ import CreateProject from "./post/createProject";
 import { useEffect, useState } from "react";
 import { api } from "@/data/api";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import Image from "next/image";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
-import UpdateP from "./update/UpdateP";
+import ShowP from "./showP";
 
 const Project = () => {
   const [createOpen, setCreateOpen] = useState(false);
@@ -44,26 +43,17 @@ const Project = () => {
     }
   }, [newProject]);
 
-  const [updateOpen, setUpdateOpen] = useState(false);
-  const [projData, setProjData] = useState({});
-
   
-
-  const handleUpdateOpen = async (pId) => {
-    setUpdateOpen(true);
-    try {
-          const response = await fetch(`${api}/project/singleProject/${pId}`);
-          const response2 = await response.json();
-          const data = response2?.data;
-          setProjData(data);
-        } catch (error) {
-          console.error(error);
-        }
-  };
 
   const handleProjectUpdate = (updatedProj) => {
     setProjects((prev) =>
       prev.map((p) => (p._id === updatedProj._id ? updatedProj : p))
+    );
+  };
+
+   const handleProjectCut = (projId) => {
+    setProjects((prev) =>
+      prev.filter((p) => (p._id !== projId ))
     );
   };
 
@@ -107,44 +97,13 @@ const Project = () => {
               </thead>
               <tbody>
                 {projects?.map((pd, idx) => (
-                  <tr key={pd?._id}>
-                    <td>{idx + 1}</td>
-                    <td>
-                      <Image
-                        src={pd?.thumbnail?.photo}
-                        width={80}
-                        height={50}
-                        style={{ objectFit: "cover" }}
-                        alt={`image-${pd?.title}`}
-                      />
-                    </td>
-                    <td>{pd?.title?.slice(0, 30)}...</td>
-                    <td>
-                      <button onClick={() => handleUpdateOpen(pd?._id)}>
-                        <FontAwesomeIcon icon={faPencilAlt} />
-                      </button>
-                    </td>
-                    <td>
-                      <button>
-                        <FontAwesomeIcon icon={faTrashAlt} />
-                      </button>
-                    </td>
-                  </tr>
+                  <ShowP data={pd} handleProjectUpdate={handleProjectUpdate} handleProjectCut={handleProjectCut} idx={idx} key={pd?._id} />
                 ))}
               </tbody>
             </table>
           )}
         </div>
 
-        <div className={styles.update}>
-          {updateOpen && (
-            <UpdateP
-              data={projData}
-              setOpen={setUpdateOpen}
-              onUpdate={handleProjectUpdate}
-            />
-          )}
-        </div>
       </section>
     </aside>
   );

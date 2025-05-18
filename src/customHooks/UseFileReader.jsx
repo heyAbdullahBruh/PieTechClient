@@ -1,17 +1,19 @@
 // useFilePreview.js
 import { useState, useEffect } from "react";
 
-export const useFilePreview = () => {
+export const useFilePreview = (start, end) => {
   const [files, setFiles] = useState([]); // [{ id, file, url }]
 
   const addFiles = (fileList) => {
-    const newFiles = Array.from(fileList).map((file) => {
-      return {
-        id: crypto.randomUUID(), // or use Date.now() for simpler ID
-        file,
-        url: URL.createObjectURL(file),
-      };
-    });
+    const newFiles = Array.from(fileList)
+      .slice(start || 0, end || 30)
+      .map((file) => {
+        return {
+          id: crypto.randomUUID(), // or use Date.now() for simpler ID
+          file,
+          url: URL.createObjectURL(file),
+        };
+      });
 
     setFiles((prev) => [...prev, ...newFiles]);
   };
@@ -33,5 +35,5 @@ export const useFilePreview = () => {
     };
   }, [files]);
 
-  return { files,setFiles, addFiles, removeFile };
+  return { files, setFiles, addFiles, removeFile };
 };

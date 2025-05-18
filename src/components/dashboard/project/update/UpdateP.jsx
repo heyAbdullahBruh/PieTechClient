@@ -8,13 +8,12 @@ import { useDashAuth } from "../../DashCotext/DashContext";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
 import ToastP from "@/components/popupToast/ToastP";
 
-const UpdateP = ({ setOpen,data, onUpdate }) => {
+const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
   const [projData, setProjData] = useState({
     title: "",
     details: "",
   });
   const [loading, setLoading] = useState(false);
-  const [prevPloading, setPrevPLoading] = useState(false);
   const { accessToken } = useDashAuth();
 
   const [popInfo, setPopInfo] = useState({
@@ -44,15 +43,25 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
     };
   }, [thumbImg]);
 
+  const [prevGallery, setPrevGallery] = useState([]);
+
   const {
     files: gallery,
     setFiles: setGallray,
     addFiles: addGalleryImages,
     removeFile: removeGalleryImage,
-  } = useFilePreview();
+  } = useFilePreview(0, 30 - prevGallery?.length);
 
-  const [prevGallery, setPrevGallery] = useState([]);
-
+  useEffect(() => {
+    if (data) {
+      setProjData({
+        title: data?.title,
+        details: data?.details,
+      });
+      setThumbImg(data?.thumbnail?.photo);
+      setPrevGallery(data?.gallary);
+    }
+  }, [data]);
   const colletProjData = (e) => {
     setProjData((prev) => ({
       ...prev,
@@ -60,10 +69,32 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
     }));
   };
 
-  
+  const [imgCutLoad, setImgCutLoad] = useState("");
 
-  const handleUpdateP = async (e) => {
-    e.preventDefault();
+  const prevGallaryImgCut = async (pId, imgId) => {
+    if (prevGallery?.find((i) => i.photoId === imgId)) {
+      setImgCutLoad(imgId);
+      try {
+        const res = await fetch(`${api}/project/cutImg/${pId}/${imgId}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        const data = await res.json();
+        if (data?.success) {
+          setPrevGallery(data?.gallary);
+        }
+      } catch (err) {
+        console.error("Cutting Failed", err);
+      } finally {
+        setImgCutLoad("");
+      }
+    }
+  };
+
+  const handleUpdateP = async (pId) => {
     setLoading(true);
 
     const formData = new FormData();
@@ -75,7 +106,7 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
     });
 
     try {
-      const res = await fetch(`${api}/project/update/${id}`, {
+      const res = await fetch(`${api}/project/update/${pId}`, {
         method: "PATCH",
         headers: {
           authorization: `Bearer ${accessToken}`,
@@ -84,7 +115,6 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
       });
 
       const data = await res.json();
-      console.log("✅ Updated Project Sent to Parent:", data?.project);
 
       setPopInfo({
         trigger: Date.now(),
@@ -99,8 +129,7 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
           setOpen(false);
           setGallray([]);
           setThumb([]);
-          setThumbImg("");
-          setProjData({ title: "", details: "" });
+          setData({});
         }, 2000);
       }
     } catch (err) {
@@ -110,6 +139,7 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
     }
   };
 
+  // console.log(data);
   return (
     <div className={styles.createProj} onClick={() => setOpen(false)}>
       <div className={styles.closeBtn}>
@@ -118,77 +148,96 @@ const UpdateP = ({ setOpen,data, onUpdate }) => {
 
       <div className={styles.createForm} onClick={(e) => e.stopPropagation()}>
         <div className={styles.scrollWrap}>
-          {prevPloading ? (
-            <SmallLoad />
-          ) : (
-            <form onSubmit={handleUpdateP}>
-              <label id={styles.pTitle}>
-                <textarea
-                  placeholder="Project Title"
-                  name="title"
-                  value={title}
-                  onChange={colletProjData}
-                ></textarea>
-              </label>
-              <label
-                className={styles.thumbnailLabel}
-                style={{ backgroundImage: thumbImg && `url(${thumbImg})` }}
-              >
-                <span>
-                  <FontAwesomeIcon icon={faPlus} /> Thumbnail
-                </span>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleUpdateP(data?._id)
+            }}
+          >
+            <label id={styles.pTitle}>
+              <textarea
+                placeholder="Project Title"
+                name="title"
+                value={title}
+                onChange={colletProjData}
+              ></textarea>
+            </label>
+            <label
+              className={styles.thumbnailLabel}
+              style={{ backgroundImage: thumbImg && `url(${thumbImg})` }}
+            >
+              <span>
+                <FontAwesomeIcon icon={faPlus} /> Thumbnail
+              </span>
+              <input
+                type="file"
+                name="thumbnail"
+                accept="image/*"
+                className={styles.thumbnailInput}
+                onChange={handleThumbInp}
+              />
+            </label>
+
+            <div className={styles.pGallary}>
+              <label>
+                <span>Project Gallery:</span>
                 <input
                   type="file"
-                  name="thumbnail"
+                  name="gallary"
                   accept="image/*"
-                  className={styles.thumbnailInput}
-                  onChange={handleThumbInp}
+                  onChange={(e) => addGalleryImages(e.target.files)}
+                  multiple
                 />
               </label>
+              {gallery?.length > 0 && (
+                <div className={styles.imagePreview}>
+                  {gallery.map((img, idx) => (
+                    <div key={img.id}>
+                      <button
+                        type="button"
+                        className={styles.cutImg}
+                        onClick={() => removeGalleryImage(img.id)}
+                      >
+                        ❌
+                      </button>
+                      <img src={img.url} alt={`uploaded-${idx}`} />
+                    </div>
+                  ))}
+                </div>
+              )}
+              {prevGallery?.length > 0 && (
+                <div className={styles.imagePreview}>
+                  {prevGallery?.map((img, idx) => (
+                    <div key={img?.photoId}>
+                      <button
+                        type="button"
+                        className={styles.cutImg}
+                        onClick={() =>
+                          prevGallaryImgCut(data?._id, img?.photoId)
+                        }
+                      >
+                        {imgCutLoad === img?.photoId ? <SmallLoad /> : "❌"}
+                      </button>
+                      <img src={img?.img} alt={`prevImg-${idx}`} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
-              <div className={styles.pGallary}>
-                <label>
-                  <span>Project Gallery:</span>
-                  <input
-                    type="file"
-                    name="gallary"
-                    accept="image/*"
-                    onChange={(e) => addGalleryImages(e.target.files)}
-                    multiple
-                  />
-                </label>
-                {gallery?.length > 0 && (
-                  <div className={styles.imagePreview}>
-                    {gallery.map((img, idx) => (
-                      <div key={img.id}>
-                        <button
-                          type="button"
-                          className={styles.cutImg}
-                          onClick={() => removeGalleryImage(img.id)}
-                        >
-                          ❌
-                        </button>
-                        <img src={img.url} alt={`uploaded-${idx}`} />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <label id={styles.pDesc}>
+              <textarea
+                name="details"
+                placeholder="Project Details"
+                value={details}
+                onChange={colletProjData}
+              ></textarea>
+            </label>
 
-              <label id={styles.pDesc}>
-                <textarea
-                  name="details"
-                  placeholder="Project Details"
-                  value={details}
-                  onChange={colletProjData}
-                ></textarea>
-              </label>
-
-              <button type="submit" disabled={loading}>
-                {loading ? <SmallLoad /> : "Update Project"}
-              </button>
-            </form>
-          )}
+            <button type="submit" disabled={loading}>
+              {loading ? <SmallLoad /> : "Update Project"}
+            </button>
+          </form>
         </div>
       </div>
       <ToastP popInfo={popInfo} />
