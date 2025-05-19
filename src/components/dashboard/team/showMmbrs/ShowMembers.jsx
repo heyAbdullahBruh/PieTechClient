@@ -10,9 +10,59 @@ import ToastP from "@/components/popupToast/ToastP";
 
 const ShowMembers = ({ data, onDelete }) => {
   const { _id, name, email, role, phone, memberProfile } = data;
+  const { accessToken } = useDashAuth();
+  const [isDeleteBtn, setIsdeleteBtn] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
+  const [popInfo, setPopInfo] = useState({
+    trigger: null,
+    type: null,
+    message: null,
+  });
 
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleDeleteOpen = (id) => {
+    if (id === _id) {
+      setDeleteOpen(true);
+      setUserId(id);
+    }
+  };
+  const [deleteLoad, setDeleteLoad] = useState(false);
+
+  const handleTeamMemberDelete = async (mId) => {
+    if (mId === userId) {
+      setDeleteLoad(true);
+      try {
+        const response = await fetch(`${api}/team/deleteMember/${mId}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        });
+        const data = await response.json();
+
+        setPopInfo({
+          trigger: Date.now(),
+          type: data?.success,
+          message: data?.message,
+        });
+        if (data?.success) {
+          setTimeout(() => {
+            setDeleteOpen(false);
+            onDelete(mId);
+          }, 2000);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setDeleteLoad(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -41,7 +91,46 @@ const ShowMembers = ({ data, onDelete }) => {
         )}
       </article>
 
-      
+      {deleteOpen && (
+        <div className={styles.deletePop}>
+          <div className={styles.deleteCont}>
+            <p>
+              Are you sure want to delete this member ? Please Enter Password
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleTeamMemberDelete(userId);
+              }}
+            >
+              <input
+                type="password"
+                name="passeord"
+                placeholder="Enter Your Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {deleteLoad ? (
+                <SmallLoad />
+              ) : (
+                <div>
+                  <button
+                    type="button"
+                    id={styles.cencle}
+                    onClick={() => setDeleteOpen(false)}
+                  >
+                    Cencle
+                  </button>{" "}
+                  <button type="submit" id={styles.delete}>
+                    Delete
+                  </button>
+                </div>
+              )}
+            </form>
+          </div>
+          <ToastP popInfo={popInfo} />
+        </div>
+      )}
     </>
   );
 };
