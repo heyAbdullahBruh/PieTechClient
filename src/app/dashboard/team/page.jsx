@@ -1,10 +1,7 @@
+import Team from "@/components/dashboard/team/Team";
 
 const page = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return <Team/>;
 };
 
 export default page;
