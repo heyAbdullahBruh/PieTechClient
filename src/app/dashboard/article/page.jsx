@@ -1,10 +1,7 @@
+import ArticleP from "@/components/dashboard/article/article";
 
 const page = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return <ArticleP/>;
 };
 
 export default page;

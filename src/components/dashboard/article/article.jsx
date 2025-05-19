@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import styles from "./article.module.css";
 import { api } from "@/data/api";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CreateArticle from "./create/CreateArt";
 
 const ArticleP = () => {
   const [createOpen, setCreateOpen] = useState(false);
@@ -48,8 +51,23 @@ const ArticleP = () => {
   };
   return (
     <aside className={styles.article}>
-      <section className={styles.create}></section>
-      <section className={styles.readArt}></section>
+      <section className={styles.create}>
+        <div>
+          <button onClick={() => setCreateOpen(true)}>
+            <FontAwesomeIcon icon={faPlus} /> Create A Article
+          </button>
+        </div>
+        {createOpen && (
+          <CreateArticle
+            open={createOpen}
+            setOpen={setCreateOpen}
+            setData={setNewArticle}
+          />
+        )}
+      </section>
+      <section className={styles.readArt}>
+        <h1>Article Data</h1>
+      </section>
     </aside>
   );
 };

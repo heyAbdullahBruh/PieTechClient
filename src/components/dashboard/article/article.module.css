@@ -55,7 +55,7 @@
     background: #000;
     padding: 1rem 0;
     border-radius: 16px;
-    max-width: 600px;
+    max-width: 90vw;
     width: 90%;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
     animation: popup 0.3s ease-in-out;
@@ -98,4 +98,95 @@
 .scrollWrap::-webkit-scrollbar-thumb {
     background-color: #012701;
     border-radius: 8px;
+}
+
+
+
+.createForm form {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.createForm form #pTitle {
+    width: 100%;
+    text-align: center;
+}
+
+.createForm form #pTitle textarea {
+    width: 80%;
+    height: auto;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border: none;
+    resize: vertical;
+    overflow-y: hidden;
+
+}
+
+
+.tagAndType {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#type {
+    width: 30%;
+    text-align: left;
+}
+
+#tags {
+    width: 70%;
+    text-align: right;
+}
+
+#type select,
+#tags textarea {
+    width: 90%;
+    height: 4rem;
+    border: none;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
+.thumbnailLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: calc(90vw/2.5);
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    color: #00ffff;
+    font-weight: bold;
+    background-color: #4b505085;
+}
+
+.thumbnailInput {
+    display: none;
+}
+
+.thumbnailLabel span {
+    font-size: 1.5rem;
+    color: #005383;
+    background-color: #c2c2c2;
+    border-radius: .5rem;
+    padding: 1rem;
+    z-index: 300;
+}
+
+.thumbnailLabel img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
 }
