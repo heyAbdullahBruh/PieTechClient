@@ -25,9 +25,9 @@ const CreateArticle = ({ setOpen, setData }) => {
     title: "",
     hashtags: "",
     articleType: "",
-    details: "",
+    content: "",
   });
-  const { title, details, hashtags, articleType } = articleData;
+  const { title, content, hashtags, articleType } = articleData;
 
   const colletArticleData = (e) => {
     setArticleData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -53,45 +53,45 @@ const CreateArticle = ({ setOpen, setData }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("details", details);
+    formData.append("content", content);
     formData.append("thumbnail", thumb);
     formData.append("hashtags", hashtags);
     formData.append("articleType", articleType);
-    console.log(articleData);
+    // console.log(articleData);
 
-    // setLoading(true);
-    // try {
-    //   const res = await fetch(`${api}/article/add`, {
-    //     method: "POST",
-    //     headers: { authorization: `Bearer ${accessToken}` },
-    //     body: formData,
-    //   });
-    //   const data = await res.json();
-    //   setPopInfo({
-    //     trigger: Date.now(),
-    //     type: data?.success,
-    //     message: data?.message,
-    //   });
+    setLoading(true);
+    try {
+      const res = await fetch(`${api}/article/post`, {
+        method: "POST",
+        headers: { authorization: `Bearer ${accessToken}` },
+        body: formData,
+      });
+      const data = await res.json();
+      setPopInfo({
+        trigger: Date.now(),
+        type: data?.success,
+        message: data?.message,
+      });
 
-    //   setData(data?.article);
-    //   if (data?.success) {
-    //     setTimeout(() => {
-    //       setOpen(false);
-    //       setThumb([]);
-    //       setThumbImg("");
-    //       setArticleData({
-    //         title: "",
-    //         hashtags: "",
-    //         articleType: "",
-    //         details: "",
-    //       });
-    //     }, 2000);
-    //   }
-    // } catch (err) {
-    //   console.error("Upload failed", err);
-    // } finally {
-    //   setLoading(false);
-    // }
+      setData(data?.article);
+      if (data?.success) {
+        setTimeout(() => {
+          setOpen(false);
+          setThumb([]);
+          setThumbImg("");
+          setArticleData({
+            title: "",
+            hashtags: "",
+            articleType: "",
+            content: "",
+          });
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Upload failed", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -178,9 +178,9 @@ const CreateArticle = ({ setOpen, setData }) => {
 
             <label id={styles.artDesc}>
               <TextEditor
-                value={details}
+                value={content}
                 onChange={(value) =>
-                  setArticleData((prev) => ({ ...prev, details: value }))
+                  setArticleData((prev) => ({ ...prev, content: value }))
                 }
               />
             </label>
@@ -199,9 +199,9 @@ const CreateArticle = ({ setOpen, setData }) => {
               color:'#0e0e0e',
               marginTop: "1rem",
             }}
-            dangerouslySetInnerHTML={{ __html: details }}
+            dangerouslySetInnerHTML={{ __html: content }}
           /> */}
-          
+
         </div>
       </div>
       <ToastP popInfo={popInfo} />

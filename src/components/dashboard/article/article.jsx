@@ -17,9 +17,9 @@ const ArticleP = () => {
   const fetchArtclData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${api}/article/allArticles`);
-      const response2 = await response.json();
-      setArticles(response2?.data);
+      const response = await fetch(`${api}/article/getAll`);
+      const data = await response.json();
+      setArticles(data?.articles);
     } catch (error) {
       console.error(error);
     } finally {
@@ -31,14 +31,16 @@ const ArticleP = () => {
     fetchArtclData();
   }, []);
 
-  useEffect(() => {
-    if (newArticle && newArticle?._id) {
-      setArticles((prev) => {
-        const exists = prev.some((p) => p._id === newArticle._id);
-        return exists ? prev : [newArticle, ...prev];
-      });
-    }
-  }, [newArticle]);
+  // useEffect(() => {
+  //   if (newArticle && newArticle?._id) {
+  //     setArticles((prev) => {
+  //       const exists = prev.some((p) => p._id === newArticle._id);
+  //       return exists ? prev : [newArticle, ...prev];
+  //     });
+  //   }
+  // }, [newArticle]);
+
+  console.log(newArticle);
 
   const handleArticleUpdate = (updatedArt) => {
     setArticles((prev) =>
