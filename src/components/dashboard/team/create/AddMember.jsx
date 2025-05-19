@@ -11,7 +11,7 @@ import ToastP from "@/components/popupToast/ToastP";
 import Image from "next/image";
 // import RichTextEditor from "@/components/textEditor/RichTextEditor";
 
-const Createteam = ({ setOpen, setData }) => {
+const Add_A_Member = ({ setOpen, setData }) => {
   const { accessToken } = useDashAuth();
   const [loading, setLoading] = useState(false);
   const [popInfo, setPopInfo] = useState({
@@ -53,6 +53,7 @@ const Createteam = ({ setOpen, setData }) => {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("phone", phone);
+    formData.append("role", role);
     formData.append("teamMember", memberProfile);
     // console.log(teamData);
 
@@ -70,17 +71,17 @@ const Createteam = ({ setOpen, setData }) => {
         message: data?.message,
       });
 
-      setData(data?.team);
+      setData(data?.member);
       if (data?.success) {
         setTimeout(() => {
           setOpen(false);
           setMemberProfile([]);
           setMemberProfileImg("");
           setTeamData({
-            title: "",
-            hashtags: "",
-            teamType: "",
-            content: "",
+            name: "",
+            email: "",
+            phone: "",
+            role: "",
           });
         }, 2000);
       }
@@ -92,7 +93,7 @@ const Createteam = ({ setOpen, setData }) => {
   };
 
   return (
-    <div className={styles.createArt} onClick={() => setOpen(false)}>
+    <div className={styles.createMem} onClick={() => setOpen(false)}>
       <div className={styles.closeBtn}>
         <button onClick={() => setOpen(false)}>❌Close</button>
       </div>
@@ -122,7 +123,7 @@ const Createteam = ({ setOpen, setData }) => {
             </label>
             <label id={styles.mName}>
               <span>
-                Name<sup>*</sup>:
+                Name<sup>*</sup>—
               </span>
               <input
                 type="text"
@@ -134,7 +135,7 @@ const Createteam = ({ setOpen, setData }) => {
             </label>
             <label id={styles.mEmail}>
               <span>
-                Email<sup>*</sup>:
+                Email<sup>*</sup>—
               </span>
               <input
                 type="email"
@@ -146,7 +147,7 @@ const Createteam = ({ setOpen, setData }) => {
             </label>
             <label id={styles.mPhone}>
               <span>
-                Phone<sup>*</sup>:
+                Phone<sup>*</sup>—
               </span>
               <input
                 type="text"
@@ -158,7 +159,7 @@ const Createteam = ({ setOpen, setData }) => {
             </label>
             <label id={styles.mMole}>
               <span>
-                Role<sup>*</sup>:
+                Role<sup>*</sup>—
               </span>
               <input
                 type="tetx"
@@ -179,4 +180,4 @@ const Createteam = ({ setOpen, setData }) => {
   );
 };
 
-export default Createteam;
+export default Add_A_Member;
