@@ -25,7 +25,7 @@ const ShowP = ({ data, handleProjectUpdate, handleProjectCut, idx }) => {
       setUpdateOpen(true);
 
       try {
-        const response = await fetch(`${api}/project/singleProject/${pId}`);
+        const response = await fetch(`${api}/project/singleProject/${pId}`,{cache: "no-store",});
         const response2 = await response.json();
         const data = response2?.data;
         setProjData(data);

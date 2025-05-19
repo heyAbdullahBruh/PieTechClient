@@ -6,18 +6,22 @@ import { api } from "@/data/api";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CreateArticle from "./create/CreateArt";
+import ArticleDShow from "./view/ArticleDShow";
+import SmallLoad from "@/components/smallLaoding/smallLoad";
 
 const ArticleP = () => {
   const [createOpen, setCreateOpen] = useState(false);
   const [newArticle, setNewArticle] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const [Articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   const fetchArtclData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${api}/article/getAll`);
+      const response = await fetch(`${api}/article/getAll`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       setArticles(data?.articles);
     } catch (error) {
@@ -40,7 +44,7 @@ const ArticleP = () => {
   //   }
   // }, [newArticle]);
 
-  console.log(newArticle);
+  // console.log(articles);
 
   const handleArticleUpdate = (updatedArt) => {
     setArticles((prev) =>
@@ -69,6 +73,21 @@ const ArticleP = () => {
       </section>
       <section className={styles.readArt}>
         <h1>Article Data</h1>
+        {loading ? (
+          <SmallLoad />
+        ) : (
+          <>
+            {" "}
+            {articles?.map((art) => (
+              <ArticleDShow
+                data={art}
+                key={art?._id}
+                onUpdate={handleArticleUpdate}
+                onDelete={handleArticleCut}
+              />
+            ))}
+          </>
+        )}
       </section>
     </aside>
   );

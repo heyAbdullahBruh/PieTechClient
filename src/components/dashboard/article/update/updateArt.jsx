@@ -12,9 +12,12 @@ import Image from "next/image";
 import TextEditor from "@/components/textEditor/TextEditor";
 // import RichTextEditor from "@/components/textEditor/RichTextEditor";
 
-const UpdateArticle = ({ setOpen, setData }) => {
+const UpdateArticle = ({ setOpen, setData ,onUpdate,artData}) => {
   const { accessToken } = useDashAuth();
   const [loading, setLoading] = useState(false);
+
+//   console.log(artData?._id);
+
   const [popInfo, setPopInfo] = useState({
     trigger: null,
     type: null,
@@ -47,6 +50,19 @@ const UpdateArticle = ({ setOpen, setData }) => {
       if (thumbImg) URL.revokeObjectURL(thumbImg);
     };
   }, [thumbImg]);
+
+    useEffect(() => {
+    if (artData) {
+        setArticleData({
+            title:artData?.title,
+            content:artData?.content,
+            articleType:artData?.articleType,
+            hashtags:artData?.hashtags?.join(' ')
+        });
+        setThumbImg(artData?.thumbnail?.photo);
+        console.log(artData?.content);
+    }
+  }, [artData]);
 
   const handleUploadProj = async (e) => {
     e.preventDefault();

@@ -190,3 +190,30 @@
     height: 100%;
     z-index: 200;
 }
+
+
+/* Read article design start---> */
+.readArt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.showArt{
+     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid #00ffff;
+    padding: 1rem;
+}
+.showArt div{
+     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

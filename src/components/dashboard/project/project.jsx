@@ -20,7 +20,9 @@ const Project = () => {
   const fetchProjData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${api}/project/allProjects`);
+      const response = await fetch(`${api}/project/allProjects`, {
+        cache: "no-store",
+      });
       const response2 = await response.json();
       setProjects(response2?.data);
     } catch (error) {
@@ -43,18 +45,14 @@ const Project = () => {
     }
   }, [newProject]);
 
-  
-
   const handleProjectUpdate = (updatedProj) => {
     setProjects((prev) =>
       prev.map((p) => (p._id === updatedProj._id ? updatedProj : p))
     );
   };
 
-   const handleProjectCut = (projId) => {
-    setProjects((prev) =>
-      prev.filter((p) => (p._id !== projId ))
-    );
+  const handleProjectCut = (projId) => {
+    setProjects((prev) => prev.filter((p) => p._id !== projId));
   };
 
   return (
@@ -97,13 +95,18 @@ const Project = () => {
               </thead>
               <tbody>
                 {projects?.map((pd, idx) => (
-                  <ShowP data={pd} handleProjectUpdate={handleProjectUpdate} handleProjectCut={handleProjectCut} idx={idx} key={pd?._id} />
+                  <ShowP
+                    data={pd}
+                    handleProjectUpdate={handleProjectUpdate}
+                    handleProjectCut={handleProjectCut}
+                    idx={idx}
+                    key={pd?._id}
+                  />
                 ))}
               </tbody>
             </table>
           )}
         </div>
-
       </section>
     </aside>
   );
