@@ -1,0 +1,77 @@
+/* Hero styles ---> */
+.owHead {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+/* Video covers entire container */
+.backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Light gray transparent overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #205f457e, #3852177c);
+    z-index: -1;
+}
+
+/* Foreground content styling */
+.heroContent {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroContent h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+
+.workShow {
+    width: 100%;
+    padding: 1rem;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.projTemp {
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 1px 1px 2px 2px #f0f5f3b4;
+}
+
+.projTemp img {
+    width: 80%;
+    height: 13rem;
+    object-fit: cover;
+}
+
+.projTemp h4 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+}

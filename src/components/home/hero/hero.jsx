@@ -1,4 +1,4 @@
-import styles from "@/components/home/home.module.css";
+import styles from "../home.module.css";
 import Link from "next/link";
 import { ReactTyped } from "react-typed";
 
