@@ -12,6 +12,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
   const [projData, setProjData] = useState({
     title: "",
     details: "",
+    pLink: "",
   });
   const [loading, setLoading] = useState(false);
   const { accessToken } = useDashAuth();
@@ -22,7 +23,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
     message: null,
   });
 
-  const { title, details } = projData;
+  const { title, details, pLink } = projData;
 
   const [thumb, setThumb] = useState([]);
   const [thumbImg, setThumbImg] = useState("");
@@ -57,6 +58,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
       setProjData({
         title: data?.title,
         details: data?.details,
+        pLink: data?.pLink,
       });
       setThumbImg(data?.thumbnail?.photo);
       setPrevGallery(data?.gallary);
@@ -101,6 +103,8 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
     formData.append("title", title);
     formData.append("details", details);
     formData.append("thumbnail", thumb);
+    formData.append("pLink", pLink);
+
     gallery.forEach((img) => {
       formData.append("gallary", img.file);
     });
@@ -151,7 +155,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleUpdateP(data?._id)
+              handleUpdateP(data?._id);
             }}
           >
             <label id={styles.pTitle}>
@@ -161,6 +165,15 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
                 value={title}
                 onChange={colletProjData}
               ></textarea>
+            </label>
+            <label id={styles.pLink}>
+              <input
+                type="text"
+                placeholder="Project Link"
+                name="pLink"
+                value={pLink}
+                onChange={colletProjData}
+              />
             </label>
             <label
               className={styles.thumbnailLabel}
