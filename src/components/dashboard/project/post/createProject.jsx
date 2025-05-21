@@ -12,6 +12,7 @@ const CreateProject = ({ setOpen, setData }) => {
   const [projData, setProjData] = useState({
     title: "",
     details: "",
+    pLink: "",
   });
   const [loading, setLoading] = useState(false);
   const { accessToken } = useDashAuth();
@@ -30,7 +31,7 @@ const CreateProject = ({ setOpen, setData }) => {
       };
     });
   };
-  const { title, details } = projData;
+  const { title, details, pLink } = projData;
   /*Collect Thumbnail image */
   const [thumb, setThumb] = useState([]);
   const [thumbImg, setThumbImg] = useState("");
@@ -64,6 +65,7 @@ const CreateProject = ({ setOpen, setData }) => {
   const formData = new FormData();
   formData.append("title", title);
   formData.append("details", details);
+  formData.append("pLink", pLink);
   formData.append("thumbnail", thumb);
   gallery.forEach((img) => {
     formData.append("gallary", img.file);
@@ -119,6 +121,15 @@ const CreateProject = ({ setOpen, setData }) => {
                 value={title}
                 onChange={colletProjData}
               ></textarea>
+            </label>
+            <label id={styles.pLink}>
+              <input
+                type="text"
+                placeholder="Project Link"
+                name="pLink"
+                value={pLink}
+                onChange={colletProjData}
+              />
             </label>
             <label
               className={styles.thumbnailLabel}

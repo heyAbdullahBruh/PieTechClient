@@ -29,7 +29,6 @@ const OurWorks = () => {
   }, []);
   
   return (
-    
     <aside className={styles.ourWorks}>
       <section className={styles.owHead}>
         {/* Background Video */}
