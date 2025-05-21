@@ -9,7 +9,7 @@ import SmallLoad from "@/components/smallLaoding/smallLoad";
 import ToastP from "@/components/popupToast/ToastP";
 
 const ShowMembers = ({ data, onDelete }) => {
-  const { _id, name, email, role, phone, memberProfile } = data;
+  const { _id, memberName, email, role, phone, memberProfile } = data;
   const { accessToken } = useDashAuth();
   const [isDeleteBtn, setIsdeleteBtn] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -75,9 +75,9 @@ const ShowMembers = ({ data, onDelete }) => {
           src={memberProfile?.photo}
           width={150}
           height={150}
-          alt={`${name}'s Profile`}
+          alt={`${memberName}'s Profile`}
         />
-        <h3>{name}</h3>
+        <h3>{memberName}</h3>
         <h4>{role}</h4>
         <p>{email}</p>
         <p>{phone}</p>
