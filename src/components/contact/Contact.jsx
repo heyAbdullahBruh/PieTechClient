@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { api } from "@/data/api";
 
 const Contact = () => {
   const [msgData, setMsgData] = useState({
@@ -19,8 +20,14 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [popInfo, setPopInfo] = useState({
+    trigger: null,
+    type: null,
+    message: null,
+  });
 
   const [captchaValue, setCaptchaValue] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleCollectChangesData = (e) => {
     setMsgData((prev) => ({
@@ -29,9 +36,9 @@ const Contact = () => {
     }));
   };
 
-  const { name, email, subject, message } = msgData;
+  const { email, subject, name, message } = msgData;
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
 
     if (!captchaValue) {
@@ -39,10 +46,38 @@ const Contact = () => {
       return;
     }
 
-    console.log("Form Data:", msgData);
-    console.log("Captcha Token:", captchaValue);
+    setLoading(true);
+    try {
+      const res = await fetch(`${api}/sendmail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          subject,
+          name,
+          message,
+          token: captchaValue,
+        }),
+      });
+      const data = await res.json();
+      setPopInfo({
+        trigger: Date.now(),
+        type: data?.success,
+        message: data?.message,
+      });
 
-    // TODO: Send both `msgData` and `captchaValue` to backend API for further processing
+      if (data?.success) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Send failed", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // console.log();
