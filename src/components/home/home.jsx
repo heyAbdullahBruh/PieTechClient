@@ -10,23 +10,8 @@ import { useEffect } from "react";
 import { api } from "@/data/api";
 
 const Home = () => {
-  const fetchToken = async () => {
-    try {
-      const response = await fetch(`https://api-pietech.onrender.com`, {
-        method: "GET",
-        credentials: "include",
-      });
-
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchToken();
-  }, []);
+ 
+ 
   return (
     <aside className={styles.home}>
       <Hero />
