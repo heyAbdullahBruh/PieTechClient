@@ -20,6 +20,7 @@ export default async function DashBoardLayout({ children }) {
       headers: {
         cookie: `token=${token}`, // manually forward token
       },
+      credentials:'include',
       cache: "no-store", // avoid caching for SSR
     });
     const getData = await response.json();
