@@ -14,7 +14,7 @@ export default async function DashBoardLayout({ children }) {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
-
+    
     const response = await fetch(`${api}/admin/authPermission`, {
       method: "GET",
       headers: {
@@ -30,10 +30,10 @@ export default async function DashBoardLayout({ children }) {
           <>
             <DashboardNav />
 
-            <main style={{marginTop:"7rem"}}>{children}</main>
+            <main style={{ marginTop: "7rem" }}>{children}</main>
           </>
         ) : (
-          <DashboardAuth />
+          <DashboardAuth cookieStore={cookieStore} />
         )}
       </DashProvider>
     );

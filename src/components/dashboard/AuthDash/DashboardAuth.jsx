@@ -6,7 +6,7 @@ import { api } from "@/data/api";
 import { useDashAuth } from "../DashCotext/DashContext";
 import ToastP from "@/components/popupToast/ToastP";
 
-const DashboardAuth = () => {
+const DashboardAuth = ({ cookieStore }) => {
   const { setAccessToken } = useDashAuth();
 
   const [authData, setAuthData] = useState({
@@ -41,19 +41,24 @@ const DashboardAuth = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials:'include',
-        cache:'no-store',
+        credentials: "include",
+        cache: "no-store",
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
-
+      cookieStore.set("token", data?.token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
       setPopInfo({
         trigger: Date.now(),
         type: data?.success,
         message: data?.message,
       });
-console.log(data);  
+      console.log(data);
       if (data?.success) {
         setTimeout(() => {
           setAccessToken(data?.token);
