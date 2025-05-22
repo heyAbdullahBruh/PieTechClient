@@ -1,18 +1,6 @@
-:root {
-    --background: #04cef1;
-    --foreground: #030c13;
-}
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #030c13;
-        --foreground: #04cef1;
-    }
-}
 
 .container {
-    background-color: var(--background);
-    color: var(--foreground);
     padding: 2rem;
     border-radius: 16px;
     max-width: 80vw;
@@ -68,8 +56,6 @@
 }
 
 .sliderControls button {
-    background: var(--foreground);
-    color: var(--background);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -95,13 +81,13 @@
 .projectBtn {
     display: inline-block;
     text-align: center;
-    background: var(--foreground);
-    color: var(--background);
     padding: 0.8rem 2rem;
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
     transition: background 0.3s;
+    background-color: #0088ffee;
+    color: #ffffff;
 }
 
 .projectBtn:hover {
@@ -109,11 +95,10 @@
 }
 
 .ctaBox {
+    background-color: rgba(4, 67, 122, 0.473);
     margin-top: 3rem;
     text-align: center;
     padding: 2rem;
-    background-color: var(--foreground);
-    color: var(--background);
     border-radius: 12px;
 }
 
@@ -129,14 +114,13 @@
 
 .ctaBtn {
     padding: 0.8rem 2rem;
-    background: var(--background);
-    color: var(--foreground);
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
     font-weight: 600;
     transition: opacity 0.3s;
+    background-color: #03c04b;
 }
 
 .ctaBtn:hover {
