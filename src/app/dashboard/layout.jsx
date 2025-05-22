@@ -12,8 +12,8 @@ export const metadata = {
 
 export default async function DashBoardLayout({ children }) {
   try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token")?.value;
+    // const cookieStore = await cookies();
+    // const token = cookieStore.get("token")?.value;
     
     const response = await fetch(`${api}/admin/authPermission`, {
       method: "GET",
@@ -21,7 +21,7 @@ export default async function DashBoardLayout({ children }) {
       cache: "no-store", // avoid caching for SSR
     });
     const getData = await response.json();
-    console.log(token);
+    console.log(getData);
     return (
       <DashProvider authPermission={getData?.auth}>
         {getData?.auth === true ? (
