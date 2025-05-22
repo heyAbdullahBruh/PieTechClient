@@ -78,7 +78,7 @@ const CommentArt = ({ articleId }) => {
         cache: "no-store",
       });
       const data = await response.json();
-      setComments(data?.comments);
+      setComments(data?.comments || []);
     } catch (error) {
       console.error(error);
     } finally {
@@ -157,26 +157,25 @@ const CommentArt = ({ articleId }) => {
         </button>
       </form>
       <hr />
-{/* lorem100  */}
+      {/* lorem100  */}
       <div className={styles.commentCont}>
-        {
-            comments?.length >0 ? <>
-                {
-                    comments?.map((c)=>( 
-                        <article key={c?._id}>
-                            <div className={styles.cProfile}>
-                                <h2>{c?.commenterMail?.slice(0,2).toLocaleUpperCase()}</h2>
-                            </div>
-                            <div className={styles.commentBody}>
-                                <h3>{c?.commenterName}</h3>
-                                <pre>{c?.comment}</pre>
-                            </div>
-                        </article>
-
-                    ))
-                }
-            </>:<p>No Comment Found</p>
-        }
+        {comments?.length > 0 ? (
+          <>
+            {comments?.map((c) => (
+              <article key={c?._id}>
+                <div className={styles.cProfile}>
+                  <h2>{c?.commenterMail?.slice(0, 2).toLocaleUpperCase()}</h2>
+                </div>
+                <div className={styles.commentBody}>
+                  <h3>{c?.commenterName}</h3>
+                  <pre>{c?.comment}</pre>
+                </div>
+              </article>
+            ))}
+          </>
+        ) : (
+          <p>No Comment Found</p>
+        )}
       </div>
 
       <ToastP popInfo={popInfo} />
