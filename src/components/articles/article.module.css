@@ -1,0 +1,217 @@
+.articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.articles hr {
+    width: 15rem;
+    margin: 1rem;
+}
+
+.artlBannerSec {
+    width: 100%;
+    background-image: url('../../gallary/siteImgs/articlePageHero.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-origin: border-box;
+}
+
+.heroCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7rem;
+    background-color: #03223ba1;
+}
+
+.heroCont h1 {
+    font-size: xx-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #f0f8ff;
+}
+
+.artlShowSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artclAct button {
+    &:hover {
+        background-color: #008cffa1;
+    }
+}
+
+.artclAct button.active {
+    color: #ffffff;
+    background: none;
+
+}
+
+.articleData {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.artCont {
+    /* background: #fff; */
+    border-radius: 12px;
+    box-shadow: 1px 1px 2px 4px #76f1ff12;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.artCont:hover {
+    box-shadow: 1px 1px 2px 1px #76f1ff91;
+    transform: translateY(-5px);
+}
+
+.artCont img {
+    width: 100%;
+    height: auto;
+}
+
+.artCont h4 {
+    width: 100%;
+    font-style: 1.1rem;
+    padding: .3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.artCont p {
+    width: 5rem;
+    padding: 0 .3rem;
+    color: #f0f8ff;
+    background-color: #85796a;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.hashtags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: .3rem;
+    flex-wrap: wrap;
+    padding: .5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.hashtags span {
+    background-color: #6e777785;
+    color: #d7ffee;
+    font-size: .8rem;
+    padding: .2rem;
+    border-radius: .3rem;
+}
+
+
+/* Article Details design start ---> */
+
+.articleD {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    gap: 2rem;
+}
+
+#hr{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.artDetailUp {
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    /* gap: 1rem; */
+    margin: 0 auto;
+}
+
+#heading {
+    font-size: 2.5rem;
+    width: 80%;
+    margin: 0 auto;
+    color: #f0f8ff;
+}
+
+#thumbnail {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+#articleType {
+    width: 5rem;
+    margin-right: 25%;
+    margin-left: 75%;
+    padding: 0 .3rem;
+    color: #f0f8ff;
+    background-color: #85796a;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.articleD .hashtags {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#artContent {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+@media (width<=800px) {
+    #heading {
+        font-size: 1.8rem;
+        width: 95%;
+        margin: 0 auto;
+        color: #f0f8ff;
+    }
+
+    #thumbnail {
+        width: 95%;
+    }
+
+    .articleD .hashtags {
+        width: 90%;
+    }
+
+    #artContent {
+        width: 95%;
+    }
+}
+
+
+@media (width<=600px) {
+    .articleD {
+        overflow-x: visible;
+
+    }
+
+    #heading {
+        font-size: 1.3rem;
+    }
+
+    #artContent {
+        width: 100%;
+        padding: 1rem;
+        font-size: 80%;
+    }
+}

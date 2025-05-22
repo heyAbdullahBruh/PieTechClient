@@ -287,7 +287,7 @@ button {
     text-decoration: underline;
     color: #0064fa;
     font-weight: 500;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .editorContent p {
@@ -299,4 +299,25 @@ button {
 .editorContent ul,
 .editorContent ol {
     padding: 1rem;
+}
+
+@media (width<=600px) {
+  .editorContent h1 {
+    font-size: 1.3rem;
+}
+
+.editorContent h2 {
+    font-size: 1.15rem;
+}
+
+.editorContent h3 {
+    font-size: 1rem;
+}
+
+.editorContent h4 {
+    font-size: .9rem;
+}
+   .editorContent p {
+    font-size: .8rem;
+}
 }

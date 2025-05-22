@@ -1,10 +1,7 @@
+import Articles from "@/components/articles/Articles";
 
 const page = () => {
-    return (
-        <div>
-            <h1>Articles</h1>
-        </div>
-    );
+    return <Articles/>;
 };
 
 export default page;
