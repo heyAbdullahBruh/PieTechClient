@@ -38,11 +38,11 @@ const DashboardAuth = () => {
     try {
       const response = await fetch(`${api}/admin/logIn`, {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
+        credentials: "include",
       });
 
       const data = await response.json();
