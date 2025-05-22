@@ -6,8 +6,9 @@
     gap: 1rem;
     margin: 1rem;
 }
-.commentArt hr{
-    width: 50%;
+
+.commentArt hr {
+    width: 70%;
 }
 
 .commentArt form {
@@ -73,6 +74,46 @@
 }
 
 
+.commentCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.commentCont article {
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 1px 1px 2px 2px #fff;
+    padding: .6rem;
+    text-align: left;
+    border-radius: 1rem;
+}
+
+.commentCont article h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: #f0f0f0;
+    background-color: #16004b;
+    border-radius: 3rem;
+}
+
+.commentCont article pre {
+    color: #b6b6b6;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
 @media (width<=780px) {
     .commentArt form {
         width: 80vw;
@@ -82,11 +123,12 @@
         flex-direction: column;
     }
 
-    /* .commentArt form input {
-        width: 20rem;
+    .commentArt hr {
+        width: 90%;
     }
 
-    .commentArt form textarea {
-        width: 20rem;
-    } */
+    .commentCont article {
+        width: 80vw;
+        flex-direction: column;
+    }
 }

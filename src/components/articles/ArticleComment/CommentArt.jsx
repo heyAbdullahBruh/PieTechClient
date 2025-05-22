@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./comment.module.css";
 import { api } from "@/data/api";
 import ToastP from "@/components/popupToast/ToastP";
@@ -10,7 +10,10 @@ const CommentArt = ({ articleId }) => {
     type: null,
     message: null,
   });
+  const [newComment, setNewComment] = useState({});
+  const [comments, setComments] = useState([]);
 
+  //   Add/Post A Comment --->
   const [commentData, setCommentData] = useState({
     name: "",
     email: "",
@@ -18,7 +21,6 @@ const CommentArt = ({ articleId }) => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [newComment, setNewComment] = useState({});
 
   const handleCollectCommentData = (e) => {
     setCommentData((prev) => {
@@ -66,8 +68,38 @@ const CommentArt = ({ articleId }) => {
     }
   };
 
-  console.log(newComment);
+  //   Get A Comments --->
+  const [cLoading, setCLoading] = useState(false);
 
+  const fetchComments = async (artId) => {
+    setCLoading(true);
+    try {
+      const response = await fetch(`${api}/article/comment/get/${artId}`, {
+        cache: "no-store",
+      });
+      const data = await response.json();
+      setComments(data?.comments);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setCLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchComments(articleId);
+  }, [articleId]);
+
+  useEffect(() => {
+    if (newComment && newComment?._id) {
+      setComments((prev) => {
+        const exists = prev?.some((p) => p._id === newComment._id);
+        return exists ? prev : [newComment, ...prev];
+      });
+    }
+  }, [newComment]);
+
+  console.log(comments);
   return (
     <div className={styles.commentArt}>
       <h1>Comments --{">"}</h1>
@@ -114,16 +146,39 @@ const CommentArt = ({ articleId }) => {
           <textarea
             name="comment"
             id="comment"
-            placeholder="Pick A Comment"
+            placeholder="Share your thoughts about this article..."
             required
             value={comment}
             onChange={handleCollectCommentData}
           ></textarea>
         </label>
         <button type="submit" disabled={loading}>
-          {loading ? <SmallLoad /> : "Pick Comment"}
+          {loading ? <SmallLoad /> : "Drop Your Comment"}
         </button>
-      </form><hr />
+      </form>
+      <hr />
+{/* lorem100  */}
+      <div className={styles.commentCont}>
+        {
+            comments?.length >0 ? <>
+                {
+                    comments?.map((c)=>( 
+                        <article key={c?._id}>
+                            <div className={styles.cProfile}>
+                                <h2>{c?.commenterMail?.slice(0,2).toLocaleUpperCase()}</h2>
+                            </div>
+                            <div className={styles.commentBody}>
+                                <h3>{c?.commenterName}</h3>
+                                <pre>{c?.comment}</pre>
+                            </div>
+                        </article>
+
+                    ))
+                }
+            </>:<p>No Comment Found</p>
+        }
+      </div>
+
       <ToastP popInfo={popInfo} />
     </div>
   );
