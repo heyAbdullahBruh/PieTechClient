@@ -12,7 +12,7 @@ import { api } from "@/data/api";
 const Home = () => {
   const fetchToken = async () => {
     try {
-      const response = await fetch(`${api}`, {
+      const response = await fetch(`https://api-pietech.onrender.com`, {
         method: "GET",
         credentials: "include",
       });
