@@ -8,7 +8,8 @@ import SmallLoad from '../smallLaoding/smallLoad';
 
 export default function CookiePopup() {
   const [showPopup, setShowPopup] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [accLoading, setAccLoading] = useState(false);
+  const [disLoading, setDisLoading] = useState(false);
 
   useEffect(() => {
     const consent = Cookies.get('cookie_accepted');
@@ -30,30 +31,30 @@ export default function CookiePopup() {
   };
 
   const handleAccept = async () => {
-    setLoading(true);
+    setAccLoading(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
         await sendConsentData({ lat: latitude, lng: longitude });
         Cookies.set('cookie_accepted', 'true', { expires: 30 });
         setShowPopup(false);
-        setLoading(false);
+        setAccLoading(false);
       },
       async () => {
         await sendConsentData({});
         Cookies.set('cookie_accepted', 'true', { expires: 30 });
         setShowPopup(false);
-        setLoading(false);
+        setAccLoading(false);
       }
     );
   };
 
   const handleDecline = async () => {
-    setLoading(true);
+    setDisLoading(true);
     await sendConsentData({});
     Cookies.set('cookie_accepted', 'true', { expires: 30 });
     setShowPopup(false);
-    setLoading(false);
+    setDisLoading(false);
   };
 
   if (!showPopup) return null;
@@ -68,10 +69,10 @@ export default function CookiePopup() {
         </p>
         <div className={styles.buttonGroup}>
           <button className={styles.acceptBtn} onClick={handleAccept} disabled={loading}>
-            {loading ? <SmallLoad/> : 'Accept'}
+            {accLoading ? <SmallLoad/> : 'Accept'}
           </button>
           <button className={styles.declineBtn} onClick={handleDecline} disabled={loading}>
-            {loading ? <SmallLoad/> : 'Decline'}
+            {disLoading ? <SmallLoad/> : 'Decline'}
           </button>
         </div>
       </div>
