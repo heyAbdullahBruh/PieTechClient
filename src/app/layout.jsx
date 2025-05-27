@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navber from "@/components/navber/navber";
 import Footer from "@/components/Footer/foooter";
+import CookiePopup from "@/components/AcceptCookie/CookiePopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,12 +22,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <nav>
           <Navber />
         </nav>
         <main>{children}</main>
+        <CookiePopup/>
         <footer><Footer/></footer>
       </body>
     </html>
