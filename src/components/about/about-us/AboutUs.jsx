@@ -130,7 +130,7 @@ const AboutUs = () => {
           </p>
           <div className={styles.abtDesc}>
             <p>
-              At <strong>PieTech</strong>, we don’t just build websites — we
+              At <strong>Pietenium</strong>, we don’t just build websites — we
               engineer exceptional digital experiences. <br />
               We’re a creative tech agency fueled by innovation, design, and
               real-world problem-solving.
@@ -156,7 +156,7 @@ const AboutUs = () => {
             </p>
             <p>
               We stay ahead of emerging technologies to help your business stay
-              ahead of the competition. At PieTech, communication is clear,
+              ahead of the competition. At Pietenium, communication is clear,
               collaboration is consistent, and quality is non-negotiable.
             </p>
             <p>
@@ -182,7 +182,7 @@ const AboutUs = () => {
             </div>
             <div className={styles.mvDesc}>
               <p>
-                At <strong>PieTech</strong>, our mission is to empower
+                At <strong>Pietenium</strong>, our mission is to empower
                 businesses by delivering modern, scalable, and user-focused web
                 solutions. <br />
                 We aim to solve real-world problems through innovation, clean
@@ -201,7 +201,7 @@ const AboutUs = () => {
           <div className={styles.visionCont}>
             <div className={styles.mvDesc}>
               <p>
-                At <strong>PieTech</strong>, our mission is to empower
+                At <strong>Pietenium</strong>, our mission is to empower
                 businesses by delivering modern, scalable, and user-focused web
                 solutions. <br />
                 We aim to solve real-world problems through innovation, clean

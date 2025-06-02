@@ -231,7 +231,7 @@ const Services = () => {
 
         <div className={styles.whyUs}>
           <div className={styles.wuDesc}>
-            <h2>💎 Why Choose PieTech?</h2>
+            <h2>💎 Why Choose Pietenium?</h2>
             <hr />
             <p>
               We’re not just developers — we’re your digital growth partners,

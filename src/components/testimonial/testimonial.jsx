@@ -7,7 +7,7 @@ const testimonials = [
     name: "James Arthur",
     rating: 5,
     review:
-      "PieTech helped us revamp our entire online presence. Their attention to detail and communication was top-notch.",
+      "Pietenium helped us revamp our entire online presence. Their attention to detail and communication was top-notch.",
   },
   {
     name: "Sophia Reed",
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Liam Bennett",
     rating: 5,
     review:
-      "Working with PieTech was the best decision for our startup’s website. Highly recommended!",
+      "Working with Pietenium was the best decision for our startup’s website. Highly recommended!",
   },
   {
     name: "Emma Cooper",

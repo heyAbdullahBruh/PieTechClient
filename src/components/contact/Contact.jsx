@@ -12,6 +12,8 @@ import Link from "next/link";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { api } from "@/data/api";
+import ToastP from "../popupToast/ToastP";
+import SmallLoad from "../smallLaoding/smallLoad";
 
 const Contact = () => {
   const [msgData, setMsgData] = useState({
@@ -110,8 +112,8 @@ const Contact = () => {
             </p>
             <p>
               <FontAwesomeIcon icon={faMessage} />
-              <Link href={"mailto:pietech1618@protonmail.com"}>
-                <strong>pietech1618@protonmail.com</strong>
+              <Link href={"mailto:pietenium0@gmail.com"}>
+                <strong>pietenium0@gmail.com</strong>
               </Link>
             </p>
           </div>
@@ -179,12 +181,15 @@ const Contact = () => {
 
             {/* reCAPTCHA */}
             <ReCAPTCHA
-              sitekey={'6Ldz_TgrAAAAAGn5B06uIzFEhmk2VVpgPLydH6Yw'}
+              sitekey={"6Ldz_TgrAAAAAGn5B06uIzFEhmk2VVpgPLydH6Yw"}
               onChange={(token) => setCaptchaValue(token)}
             />
 
-            <button type="submit">Send Message</button>
+            <button type="submit" disabled={loading}>
+              {loading ? <SmallLoad /> : "Send Message"}{" "}
+            </button>
           </form>
+          <ToastP popInfo={popInfo} />
         </div>
       </section>
     </aside>

@@ -48,7 +48,7 @@ const Footer = () => {
       <hr />
       <div className={styles.footerMid}>
         <Link href={"#"}>
-          <h1 className={styles.logo}>PieTech.io</h1>
+          <h1 className={styles.logo}>Pietenium.io</h1>
           <p>We Build Better.</p>
         </Link>
         <p>
@@ -59,14 +59,14 @@ const Footer = () => {
         </p>
         <p>
           <strong>Email : </strong>
-          <Link href={"mailto:pietech00@gmail.com"}>
-            pietech00@gmail.com
+          <Link href={"mailto:pietenium0@gmail.com"}>
+            pietenium0@gmail.com
           </Link>
         </p>
       </div>
       <hr />
       <div className={styles.footerDown}>
-        <Link href={"https://www.facebook.com/PieTech.0/"} target='_blank'>
+        <Link href={"https://www.facebook.com/Pietenium.0/"} target='_blank'>
           <button>
             <FontAwesomeIcon icon={faFacebook} />
           </button>
@@ -76,7 +76,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faLinkedinIn} />
           </button>
         </Link>
-        <Link href={"https://www.instagram.com/pietech0/"} target='_blank'>
+        <Link href={"https://www.instagram.com/pietenium/"} target='_blank'>
           <button>
             <FontAwesomeIcon icon={faInstagramSquare} />
           </button>

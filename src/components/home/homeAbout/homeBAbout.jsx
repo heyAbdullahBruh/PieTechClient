@@ -47,7 +47,7 @@ const HomeAbout = () => {
       <div className={styles.abtSection}>
         <div className={styles.hAbtDesc}>
           <p>
-            At PieTech, we’re passionate about crafting digital experiences that
+            At Pietenium, we’re passionate about crafting digital experiences that
             drive real business growth. With a focus on design, performance, and
             user-centric solutions, we help brands stand out in the digital
             world. Our team blends creativity and technology to build websites,
@@ -85,7 +85,7 @@ const HomeAbout = () => {
           <Image src={growup} alt="growUp" width={300} height={300} />
         </div>
         <div className={styles.wuDesc}>
-          <h2 className={styles.title}>💎 Why Choose PieTech?</h2>
+          <h2 className={styles.title}>💎 Why Choose Pietenium?</h2>
           <p className={styles.description}>
             We’re not just developers — we’re your digital growth partners,
             committed to delivering high-quality, scalable, and smart solutions
@@ -102,7 +102,7 @@ const HomeAbout = () => {
       </div>
       <div className={styles.knowMoreBtn}>
         <Link href={"/about-us"}>
-          <button>Know More PieTech</button>
+          <button>Know More Pietenium</button>
         </Link>
       </div>
     </section>

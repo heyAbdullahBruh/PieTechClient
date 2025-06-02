@@ -66,7 +66,7 @@ const Navber = () => {
   return (
     <section className={styles.navber}>
       <div className={styles.navLogo}>
-        <h1>PieTech</h1>
+        <h1>Pietenium</h1>
       </div>
 
       {/* Desktop Navbar */}
