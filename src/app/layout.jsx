@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "PieTech — Solve Your Digital Solution",
+  title: "PieTenium — Solve Your Digital Solution",
   description:
-    "PieTech is an smart digital agency , whose solve digital problem for everyone",
+    "PieTenium is an smart digital agency , whose solve digital problem for everyone",
 };
 
 export default function RootLayout({ children }) {

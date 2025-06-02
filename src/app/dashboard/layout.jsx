@@ -1,9 +1,9 @@
 import DashboardAuthWrapper from "./DashBoardAuthWrapper";
 
 export const metadata = {
-  title: "PieTech — Dashboard",
+  title: "PieTenium — Dashboard",
   description:
-    "PieTech is an smart digital agency , whose solve digital problem for everyone",
+    "PieTenium is an smart digital agency , whose solve digital problem for everyone",
 };
 
 export default async function DashBoardLayout({ children }) {
