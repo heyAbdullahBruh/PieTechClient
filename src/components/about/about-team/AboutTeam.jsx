@@ -52,7 +52,7 @@ const AboutTeam = () => {
                     alt={`${memberName}'s Profile`}
                   />
                   <h3>{memberName}</h3>
-                  <h4>{role} at PieTech</h4>
+                  <h4>{role} at Pietenium</h4>
                 </article>
               );
             })}

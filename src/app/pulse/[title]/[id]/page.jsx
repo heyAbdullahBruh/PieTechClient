@@ -62,10 +62,10 @@ export default async function ArticlePage({ params, searchParams }) {
             },
             publisher: {
               "@type": "Organization",
-              name: "PieTech",
+              name: "PieTenium",
               logo: {
                 "@type": "ImageObject",
-                url: "https://i.ibb.co/cSPKhzjL/Pie-Tech-io.png",
+                url: "https://i.ibb.co/JFHtgsbk/Pie-Tenium-io.png",
               },
             },
             datePublished: article.createdAt || "2025-05-21",
