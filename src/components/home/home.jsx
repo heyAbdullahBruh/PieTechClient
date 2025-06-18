@@ -6,8 +6,7 @@ import TrustedComp from "./company/TrustedComp";
 import HomeAbout from "./homeAbout/homeBAbout";
 import TestimonialSlider from "../testimonial/testimonial";
 import Link from "next/link";
-import { useEffect } from "react";
-import { api } from "@/data/api";
+import HomeArticle from "./homeArtAndWork/HomeArticle";
 
 const Home = () => {
  
@@ -17,6 +16,7 @@ const Home = () => {
       <Hero />
       <TrustedComp />
       <HomeAbout />
+      <HomeArticle/>
       <TestimonialSlider />
       <hr />
       <section className={styles.ctaSection}>
