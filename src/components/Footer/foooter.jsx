@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
       <hr />
       <div className={styles.footerDown}>
-        <Link href={"https://www.facebook.com/Pietenium.0/"} target='_blank'>
+        <Link href={"https://www.facebook.com/pietenium"} target='_blank'>
           <button>
             <FontAwesomeIcon icon={faFacebook} />
           </button>
@@ -81,7 +81,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faInstagramSquare} />
           </button>
         </Link>
-        <Link href={""}>
+        <Link href={"#"}>
           <button>
             <FontAwesomeIcon icon={faXTwitter} />
           </button>
