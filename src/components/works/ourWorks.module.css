@@ -69,7 +69,7 @@
     padding: 2rem;
     margin: 2rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 1.5rem;
 }
 
@@ -125,4 +125,23 @@
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+
+@media (max-width:780px) {
+
+    .heroContent h1 {
+        font-size: 1.5rem;
+    }
+
+    .heroContent p {
+        font-size: .9rem;
+    }
+
+    .workShow {
+        padding: .5rem;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1rem;
+    }
+
 }
