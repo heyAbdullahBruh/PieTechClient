@@ -10,7 +10,7 @@
 
 .contact hr {
     width: 15rem;
-    border:1px solid  #8a8a8ade;
+    border: 1px solid #8a8a8ade;
 }
 
 .contactHead {
@@ -55,6 +55,7 @@
     flex: 2;
     text-align: center;
 }
+
 .cntcBdyImg {
     display: flex;
     flex-direction: column;
@@ -63,6 +64,7 @@
     gap: 1rem;
     padding: 2rem;
 }
+
 .cntcBdyImg img {
     width: 80%;
     height: auto;
@@ -74,6 +76,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 2rem;
+}
+
+.address p {
+    text-align: left;
 }
 
 .contactForm {
@@ -85,7 +92,7 @@
     padding: 2rem;
 }
 
-.contactForm form{
+.contactForm form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,7 +101,7 @@
     padding: 2rem;
 }
 
-.contactForm form label{
+.contactForm form label {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,47 +110,92 @@
     padding: 0;
 }
 
-.contactForm form span{
+.contactForm form span {
     padding: 0 .5rem;
     margin: .1rem;
 }
 
-.contactForm form input{
- margin: 0;
- width: 30rem;
- height: 4rem;
- background: none;
- border: 1px solid #2af18de1;
- padding: 1rem;
- border-radius: .7rem;
+.contactForm form input {
+    margin: 0;
+    width: 30rem;
+    height: 4rem;
+    background: none;
+    border: 1px solid #2af18de1;
+    padding: 1rem;
+    border-radius: .7rem;
 }
 
-.contactForm form #message{
- margin: 0;
- width: 30rem;
- height: 10rem;
- resize: vertical;
- background: none;
- border: 1px solid #2af18de1;
- padding: 1rem;
- border-radius: .7rem;
- font-size: .9rem;font-weight: 550;
+.contactForm form #message {
+    margin: 0;
+    width: 30rem;
+    height: 10rem;
+    resize: vertical;
+    background: none;
+    border: 1px solid #2af18de1;
+    padding: 1rem;
+    border-radius: .7rem;
+    font-size: .9rem;
+    font-weight: 550;
 }
 
-.contactForm form button{
- margin: 0;
- width: 15rem;
- background: none;
- border: 1px solid #2af18de1;
- padding: 1rem;
- border-radius: .7rem;
- font-size: 1rem;font-weight: 550;
- transition: all .3s ease-in-out ;
- &:hover{
-    background: #2af18de1;
-    color: #002412e1;
- }
+.contactForm form button {
+    margin: 0;
+    width: 15rem;
+    background: none;
+    border: 1px solid #2af18de1;
+    padding: 1rem;
+    border-radius: .7rem;
+    font-size: 1rem;
+    font-weight: 550;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        background: #2af18de1;
+        color: #002412e1;
+    }
 
 }
 
 
+@media (width<=780px) {
+    .cntcHeadSect {
+        padding: 5rem 1rem;
+    }
+
+    .cntcHeadSect h1 {
+        font-size: 1.1rem;
+        color: #f0f8ff;
+    }
+
+    .cntcHeadSect p {
+        font-size: .8rem;
+    }
+
+    .cntcBdyImg img {
+        width: 50%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .contactForm form input {
+        margin: 0;
+        width: 25rem;
+    }
+
+    .contactForm form #message {
+        margin: 0;
+        width: 25rem;
+    }
+}
+
+@media (width<=350px) {
+
+    .contactForm form input {
+        width: 20rem;
+        height: 3rem;
+    }
+
+    .contactForm form #message {
+        width: 20rem;
+    }
+}
