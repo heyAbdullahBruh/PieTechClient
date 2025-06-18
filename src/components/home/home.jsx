@@ -7,6 +7,7 @@ import HomeAbout from "./homeAbout/homeBAbout";
 import TestimonialSlider from "../testimonial/testimonial";
 import Link from "next/link";
 import HomeArticle from "./homeArtAndWork/HomeArticle";
+import HomeWork from "./homeArtAndWork/HomeWork";
 
 const Home = () => {
  
@@ -16,6 +17,7 @@ const Home = () => {
       <Hero />
       <TrustedComp />
       <HomeAbout />
+      <HomeWork/>
       <HomeArticle/>
       <TestimonialSlider />
       <hr />
