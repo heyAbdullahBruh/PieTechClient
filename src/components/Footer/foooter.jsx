@@ -47,15 +47,15 @@ const Footer = () => {
       </div>
       <hr />
       <div className={styles.footerMid}>
-        <Link href={"#"}>
-          <h1 className={styles.logo}>Pietenium.io</h1>
-          <p>We Build Better.</p>
+        <Link href={"/"}>
+          <h1 className={styles.logo}>Pietenium.</h1>
+          <p>We Strive to Build Better.</p>
         </Link>
         <p>
           <strong>Address : </strong>Agarogoan, Dhaka, Bangladesh
         </p>
         <p>
-          <strong>Phone :</strong> +8801603070892
+          <strong>Phone :</strong> +88101821603355
         </p>
         <p>
           <strong>Email : </strong>
@@ -71,7 +71,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faFacebook} />
           </button>
         </Link>
-        <Link href={""}>
+        <Link href={"https://www.linkedin.com/in/heyabdullahbro"}>
           <button>
             <FontAwesomeIcon icon={faLinkedinIn} />
           </button>
