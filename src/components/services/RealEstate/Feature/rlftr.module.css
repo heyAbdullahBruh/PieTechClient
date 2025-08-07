@@ -1,8 +1,5 @@
-/* FEATURES SECTION */
 .featuresSection {
     padding: 100px 20px;
-    background: var(--foreground);
-    color: var(--background);
 }
 
 .sectionTitle {
@@ -58,7 +55,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: var(--background);
+    color: #cee2f3;
 }
 
 .featureDescription {
