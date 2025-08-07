@@ -7,6 +7,7 @@ import SolutionRl from "./Solution/SolutionRl";
 import FeatureRl from "./Feature/FeatureRl";
 import Portfolio from "./Portfolio/PortfolioRl";
 import AuditForm from "./AuditForm/AuditForm";
+import FaqSection from "./FAQ/FAQ_RL";
 
 const RealEstateLandingPage = () => {
   return (
@@ -21,6 +22,7 @@ const RealEstateLandingPage = () => {
 
       <Portfolio/>
       <AuditForm/>
+      <FaqSection/>
 
       {/* CONTACT PLACEHOLDER */}
       <div id="contact" className={styles.contactPlaceholder} />
