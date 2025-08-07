@@ -57,7 +57,7 @@ const FeatureRl = () => {
     return (
       <section className={styles.featuresSection}>
         <h2 className={styles.sectionTitle}>
-          Why Choose Our Real Estate Websites?
+          How We Can Help You Succeed
         </h2>
         <div className={styles.featuresGrid}>
           {features.map((feature, index) => (
