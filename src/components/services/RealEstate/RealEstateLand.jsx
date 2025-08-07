@@ -7,18 +7,15 @@ import SolutionRl from "./Solution/SolutionRl";
 import FeatureRl from "./Feature/FeatureRl";
 
 const RealEstateLandingPage = () => {
-
-
-
   return (
     <div className={styles.landingPage}>
       <RlHero />
 
       <ProblemRl />
 
-     <SolutionRl/>
+      <SolutionRl />
 
-    <FeatureRl/>
+      <FeatureRl />
 
       {/* CONTACT PLACEHOLDER */}
       <div id="contact" className={styles.contactPlaceholder} />
