@@ -1,0 +1,64 @@
+.audit {
+    background: rgba(78, 54, 66, 0.432);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.audit h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.audit p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.formWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.formWrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form input,
+.form textarea {
+    display: block;
+    width: 100%;
+    margin: 0.6rem 0;
+    padding: 0.8rem;
+    border: 2px solid var(--background);
+    background: transparent;
+    color: var(--background);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--background);
+    color: var(--foreground);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form button:hover {
+    opacity: 0.9;
+}
+
+.success {
+    font-size: 1.2rem;
+    color: var(--background);
+    background: var(--foreground);
+    padding: 1rem;
+    border-radius: 6px;
+}
