@@ -8,6 +8,7 @@ import FeatureRl from "./Feature/FeatureRl";
 import Portfolio from "./Portfolio/PortfolioRl";
 import AuditForm from "./AuditForm/AuditForm";
 import FaqSection from "./FAQ/FAQ_RL";
+import TestimonialsOfRl from "./Testimonial/TestRl";
 
 const RealEstateLandingPage = () => {
   return (
@@ -25,6 +26,8 @@ const RealEstateLandingPage = () => {
       <Portfolio />
       <hr className={styles.hr} />
       <AuditForm />
+      <hr className={styles.hr} />
+      <TestimonialsOfRl/>
       <hr className={styles.hr} />
       <FaqSection />
       <hr className={styles.hr} />
