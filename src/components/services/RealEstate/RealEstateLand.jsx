@@ -21,7 +21,7 @@ const RealEstateLandingPage = () => {
       <FeatureRl />
 
       <Portfolio />
-      <AuditForm />
+      <AuditForm/>
       <FaqSection />
 
       {/* CONTACT PLACEHOLDER */}
@@ -34,7 +34,7 @@ const RealEstateLandingPage = () => {
             Our real estate websites are built to convert — fast loading,
             mobile-first, SEO-powered.
           </p>
-          <a href="#contact" className={styles.ctaBtn}>
+          <a href="/contact-us" className={styles.ctaBtn}>
             Book Your Free Website Audit
           </a>
         </div>

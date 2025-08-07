@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './rlprblm.module.css';
 
 const ProblemRl = () => {
@@ -74,7 +75,7 @@ const ProblemRl = () => {
         <div className={styles.problemsGrid}>
           {problems.map((problem, index) => (
             <div key={index} className={styles.problemCard} style={{ animationDelay: `${index * 0.1}s` }}>
-              <img src={problem.image} alt={problem.title} className={styles.problemImage} />
+              <Image width={300} height={200} src={problem.image} alt={problem.title} className={styles.problemImage} />
               <h3 className={styles.problemTitle}>{problem.title}</h3>
               <p className={styles.problemDescription}>{problem.description}</p>
             </div>
