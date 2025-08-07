@@ -129,3 +129,39 @@
         transform: translateY(0);
     }
 }
+
+
+@media (max-width: 768px) {
+    .problemsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .heroContent {
+        padding: 0 15px;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .problemSection {
+        padding: 60px 15px;
+    }
+}
+
+/* SCROLL ANIMATIONS */
+@media (prefers-reduced-motion: no-preference) {
+    .problemCard {
+        animation-play-state: running;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .problemCard {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}

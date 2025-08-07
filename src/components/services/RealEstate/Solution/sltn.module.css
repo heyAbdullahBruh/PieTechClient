@@ -1,16 +1,16 @@
-
 /* SOLUTION SECTION */
 .solutionSection {
   padding: 100px 20px;
   background: linear-gradient(135deg, var(--background), #02a8d1);
   color: var(--foreground);
 }
+
 .sectionTitle {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    margin-bottom: 60px;
-    animation: fadeInUp 1s ease-out;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 60px;
+  animation: fadeInUp 1s ease-out;
 }
 
 .solutionsGrid {
@@ -67,5 +67,40 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .solutionsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .heroContent {
+    padding: 0 15px;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .solutionSection {
+    padding: 60px 15px;
+  }
+}
+
+/* SCROLL ANIMATIONS */
+@media (prefers-reduced-motion: no-preference) {
+  .solutionCard {
+    animation-play-state: running;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solutionCard {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
