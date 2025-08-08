@@ -3,6 +3,7 @@
 import HotelFeature from "./Feature/FeatureHtl";
 import HotelHero from "./Hero/heroHL";
 import styles from "./hotelLnd.module.css";
+import HotelProtfolio from "./Portfolio/PortFolio";
 import ProblemHotel from "./Problem/rlprblm";
 import SolutionHotel from "./Solution/SolutionHtl";
 
@@ -13,6 +14,7 @@ const HotelLand = () => {
       <ProblemHotel />
       <SolutionHotel />
       <HotelFeature/>
+      <HotelProtfolio/>
     </aside>
   );
 };
