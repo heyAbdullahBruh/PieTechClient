@@ -16,14 +16,23 @@ const HotelLand = () => {
   return (
     <aside className={styles.hotelLand}>
       <HotelHero />
+      <hr />
       <ProblemHotel />
+      <hr />
       <SolutionHotel />
+      <hr />
       <HotelFeature />
+      <hr />
       <HotelProtfolio />
+      <hr />
       <AuditFormHotel />
+      <hr />
       <HotelTestimonials />
+      <hr />
       <FAQ_Hotel />
+      <hr />
       <CTA_Hotel />
+      <hr />
     </aside>
   );
 };
