@@ -2,9 +2,9 @@ import HotelLand from "@/components/services/Hotel/HotelLand";
 
 export const metadata = {
   title:
-    "Hotel & Restaurant Marketing | Hospitality SEO & Booking Optimization",
+    "Top Hotel & Restaurent Sales Problem and Solution | Hospitality SEO & Booking Optimization",
   description:
-    "Boost hotel & restaurant bookings with expert hospitality SEO, lead generation & marketing strategies in USA, Canada, UK & France.",
+    "Boost hotel & restaurant bookings with expert hospitality SEO, lead generation & marketing strategies in form any where.",
   keywords: [
     "hotel marketing",
     "restaurant marketing",
@@ -17,9 +17,9 @@ export const metadata = {
     "France hospitality marketing",
   ],
   openGraph: {
-    title: "Hotel & Restaurant Marketing | Hospitality SEO Experts",
+    title: "Top Hotel & Restaurent Sales Problem and Solution| Hospitality SEO Experts",
     description:
-      "Grow your hospitality business with proven SEO, booking optimization & lead generation services across USA, Canada, UK & France.",
+      "Grow your hospitality business with proven SEO, booking optimization & lead generation services across form any where.",
     url: "https://pietenium.vercel.app/services/hotels",
     siteName: "Pietenium",
     images: [
@@ -37,7 +37,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Hotel & Restaurant Marketing | Hospitality SEO Experts",
     description:
-      "Increase hotel & restaurant bookings with top-tier SEO & lead generation for USA, Canada, UK & France.",
+      "Increase hotel & restaurant bookings with top-tier SEO & lead generation for form any where.",
     images: ["https://pietenium.vercel.app/hotel-marketing-banner.jpg"],
   },
   icons: {
