@@ -1,6 +1,7 @@
 "use client";
 
 import AuditFormHotel from "./AuditForm/hotelAudit";
+import FAQ_Hotel from "./FAQ_HTL/FAQ_HTL";
 import HotelFeature from "./Feature/FeatureHtl";
 import HotelHero from "./Hero/heroHL";
 import styles from "./hotelLnd.module.css";
@@ -19,6 +20,7 @@ const HotelLand = () => {
       <HotelProtfolio />
       <AuditFormHotel />
       <HotelTestimonials />
+      <FAQ_Hotel />
     </aside>
   );
 };
