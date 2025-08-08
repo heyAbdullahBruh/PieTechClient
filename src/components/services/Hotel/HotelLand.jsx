@@ -7,6 +7,7 @@ import styles from "./hotelLnd.module.css";
 import HotelProtfolio from "./Portfolio/PortFolio";
 import ProblemHotel from "./Problem/rlprblm";
 import SolutionHotel from "./Solution/SolutionHtl";
+import HotelTestimonials from "./TestmonialHtl/TstmnlHtl";
 
 const HotelLand = () => {
   return (
@@ -14,9 +15,10 @@ const HotelLand = () => {
       <HotelHero />
       <ProblemHotel />
       <SolutionHotel />
-      <HotelFeature/>
-      <HotelProtfolio/>
-      <AuditFormHotel/>
+      <HotelFeature />
+      <HotelProtfolio />
+      <AuditFormHotel />
+      <HotelTestimonials />
     </aside>
   );
 };
