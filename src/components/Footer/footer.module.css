@@ -1,5 +1,5 @@
 /* Variables for consistent theming */
-:root {
+.footer {
     --primary-color: #05cebd;
     --secondary-color: #1588ec;
     --text-color: #f0f0f0;
@@ -7,9 +7,7 @@
     --card-bg: rgba(30, 41, 59, 0.8);
     --border-color: rgba(148, 163, 184, 0.2);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.footer {
     background: var(--bg-color);
     color: var(--text-color);
     padding: 3rem 1rem 1rem;
