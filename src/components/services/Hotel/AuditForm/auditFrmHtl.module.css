@@ -1,4 +1,3 @@
-
 .offer {
   padding: 80px 20px;
   text-align: center;
@@ -133,7 +132,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .successMessage {
@@ -148,21 +149,34 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .headline {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-  
+
   .offer {
     padding: 60px 15px;
   }
-  
+
+
+  .subheadline {
+    font-size: .9rem;
+  }
+
+
   .offerText {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }

@@ -43,27 +43,6 @@ const AuditFormHotel = () => {
       });
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setSectionVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -75,15 +54,39 @@ const AuditFormHotel = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  useEffect(() => {
+    fetch("https://ipwho.is/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success && data?.calling_code) {
+          const code = data.calling_code.startsWith("+")
+            ? data.calling_code
+            : `+${data.calling_code}`;
+          setCountryCode(code);
+          setFormData((prev) => ({ ...prev, phone: code }));
+        } else {
+          setCountryCode("+1");
+          setFormData((prev) => ({ ...prev, phone: "+1" }));
+        }
+      })
+      .catch(() => {
+        setCountryCode("+1");
+        setFormData((prev) => ({ ...prev, phone: "+1" }));
+      });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    // Optional: format phone properly
+    // Format phone number if possible
+    let formattedPhone = formData.phone;
     const phoneNumber = parsePhoneNumberFromString(formData.phone);
     if (phoneNumber) {
-      formData.phone = phoneNumber.formatInternational();
+      formattedPhone = phoneNumber.formatInternational();
     }
+
     try {
       const res = await fetch(`${api}/hotel/postdata`, {
         method: "POST",
@@ -95,10 +98,10 @@ const AuditFormHotel = () => {
       });
 
       if (!res.ok) {
-        setError("Something went is worng ! Try Again .");
+        setError("Something went wrong! Try again.");
       }
-      const getData = await res.json();
 
+      const getData = await res.json();
       setPopInfo({
         trigger: Date.now(),
         type: getData?.success,
@@ -108,9 +111,9 @@ const AuditFormHotel = () => {
       if (getData?.success === true) {
         setSubmitted(true);
       }
-    } catch (error) {
-      console.error(error);
-      setError("Something went is worng ! Try Again .");
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong! Try again.");
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", website: "", phone: countryCode });
@@ -211,7 +214,7 @@ const AuditFormHotel = () => {
           </form>
         )}
       </div>
-      <ToastP popInfo={popInfo}/>
+      <ToastP popInfo={popInfo} />
     </section>
   );
 };
