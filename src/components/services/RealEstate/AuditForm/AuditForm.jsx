@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "./auditForm.module.css";
 import { api } from "@/data/api";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import ToastP from "@/components/popupToast/ToastP";
 
 export default function AuditFormRl() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,12 @@ export default function AuditFormRl() {
   });
   const [countryCode, setCountryCode] = useState("+1");
   const [status, setStatus] = useState("idle");
+
+  const [popInfo, setPopInfo] = useState({
+    type: null,
+    trigger: null,
+    message: null,
+  });
 
   // Auto-detect country calling code
   useEffect(() => {
@@ -71,11 +78,17 @@ export default function AuditFormRl() {
         setStatus("error");
       }
       const getData = await res.json();
-      if (getData?.success === false) {
-        setStatus("error");
+
+      setPopInfo({
+        trigger: Date.now(),
+        type: data?.success,
+        message: data?.message,
+      });
+      if (getData?.success === true) {
+        setTimeout(() => {
+          setStatus("success");
+        }, 2000);
       }
-      setStatus("success");
-      console.log(getData);
     } catch (error) {
       console.error(error);
       setStatus("error");
@@ -87,7 +100,6 @@ export default function AuditFormRl() {
         phone: countryCode,
         message: "",
       });
-      setStatus("idle");
     }
   };
 
@@ -171,6 +183,7 @@ export default function AuditFormRl() {
           </form>
         )}
       </div>
+      <ToastP popInfo={popInfo}/>
     </section>
   );
 }
