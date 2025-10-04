@@ -38,7 +38,7 @@ export default function Hero() {
               loop
             />
           </h2>
-          <p style={{color:'gold',fontStyle:'italic'}}>( Pietenium gives always Premium Services )</p>
+          <p style={{color:'gold',fontStyle:'italic'}}>( Pietenium gives always Money Making Premium Services )</p>
         </div>
         <div className={styles.heroCTA}>
           <Link href={'/contact-us'}><button>Let's Start</button></Link>
