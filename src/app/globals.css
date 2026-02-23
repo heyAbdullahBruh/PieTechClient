@@ -258,9 +258,9 @@ button {
   }
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1440px) {
   body {
-    max-width: 1700px;
+    max-width: 1980px;
     margin: 0 auto;
   }
 }

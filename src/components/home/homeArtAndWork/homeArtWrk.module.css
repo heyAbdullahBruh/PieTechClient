@@ -1,6 +1,6 @@
-/* Home Article */
 .homeArticle {
-  padding: 2rem 1rem;
+  padding: 2rem 0;
+  width: 100%;
 }
 
 .hArtHead {
@@ -22,10 +22,11 @@
 .articleData {
   display: grid;
   grid-template-columns: repeat(auto-fill, var(--card-width));
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.5rem;
   padding: 1.5rem 0;
-  max-width: 90rem;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -84,8 +85,9 @@
 }
 
 .seeAllArt {
-  width: 12rem;
-  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem 0;
 }
 
 .seeAllArt button {
@@ -105,9 +107,9 @@
   padding: 2rem;
 }
 
-/* Home Works */
 .homeWork {
-  padding: 2rem 1rem;
+  padding: 2rem 0;
+  width: 100%;
 }
 
 .hWrkHead {
@@ -129,10 +131,11 @@
 .workShow {
   display: grid;
   grid-template-columns: repeat(auto-fill, var(--card-width));
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.5rem;
   padding: 1.5rem 0;
-  max-width: 90rem;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -211,8 +214,9 @@
 }
 
 .seeAllWork {
-  width: 20rem;
-  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem 0;
 }
 
 .seeAllWork button {
