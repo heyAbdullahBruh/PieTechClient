@@ -1,6 +1,32 @@
 :root {
   --background: #04cef1;
   --foreground: #030c13;
+
+  /* Professional design system (home page) */
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-elevated: #334155;
+  --color-accent: #0ea5e9;
+  --color-text: #f8fafc;
+  --color-text-secondary: #e2e8f0;
+  --color-muted: #94a3b8;
+
+  /* Typography */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Home page cards – consistent dimensions */
+  --card-width: 20rem;
+  --card-image-height: 11rem;
+  --card-min-height: 18rem;
+  --card-border-radius: 8px;
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-card: transform 0.4s var(--ease-out-smooth), box-shadow 0.4s var(--ease-out-smooth);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,9 +46,11 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
 }
 
 * {
@@ -47,6 +75,7 @@ main {
 footer {
   background-color: #030303b0;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -59,11 +88,10 @@ a,
 i,
 input,
 label {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9rem;
-  word-spacing: -0.8px;
-  font-weight: 500;
-  opacity: 0.9;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-medium);
   margin: 0.2rem 0.4rem;
   padding: 0.1rem 0.2rem;
 }
@@ -74,7 +102,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-semibold);
   padding: 0.1rem 0.2rem;
   margin: 0.2rem 0.4rem;
 }
@@ -96,6 +126,7 @@ button {
 
 /* Large screen (1200px+) */
 @media (max-width: 1200px) {
+
   p,
   button,
   li,
@@ -121,6 +152,7 @@ button {
 
 /* Medium screen (992px) */
 @media (max-width: 992px) {
+
   p,
   button,
   li,
@@ -146,6 +178,7 @@ button {
 
 /* Tablet screen (768px) */
 @media (max-width: 768px) {
+
   p,
   button,
   li,
@@ -175,6 +208,7 @@ button {
 
 /* Mobile screen (576px) */
 @media (max-width: 576px) {
+
   p,
   button,
   li,
@@ -313,6 +347,7 @@ button {
   .editorContent h4 {
     font-size: 0.9rem;
   }
+
   .editorContent p {
     font-size: 0.8rem;
   }

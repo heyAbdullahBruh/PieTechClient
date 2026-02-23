@@ -1,10 +1,10 @@
+import Skeleton from "@/components/skeleton/Skeleton";
 import { api } from "@/data/api";
-import styles from "./homeArtWrk.module.css";
-import { useEffect, useState } from "react";
 import { slugify } from "@/utility/slugify";
-import Link from "next/link";
 import Image from "next/image";
-import SmallLoad from "@/components/smallLaoding/smallLoad";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import styles from "./homeArtWrk.module.css";
 
 const HomeArticle = () => {
   const [articles, setArticles] = useState([]);
@@ -31,10 +31,27 @@ const HomeArticle = () => {
   return (
     <section className={styles.homeArticle}>
       <div className={styles.hArtHead}>
-        <h1>📰 News & Article</h1>
+        <h1>News & Insights</h1>
       </div>
       {loading ? (
-        <SmallLoad />
+        <div className={styles.articleData}>
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className={styles.artCont} style={{ padding: "0" }}>
+              <Skeleton
+                style={{
+                  width: "100%",
+                  height: "var(--card-image-height, 200px)",
+                  borderBottomRightRadius: 0,
+                  borderBottomLeftRadius: 0,
+                }}
+              />
+              <div style={{ padding: "1rem", flex: 1, width: "100%", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <Skeleton style={{ height: "1rem", width: "40%", borderRadius: "1rem" }} />
+                <Skeleton style={{ height: "1.2rem", width: "90%", marginTop: "0.5rem" }} />
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <div className={styles.articleData}>
           {articles.length > 0 ? (
@@ -43,7 +60,7 @@ const HomeArticle = () => {
                 const { _id, title, thumbnail, articleType } = art;
                 const titleStr = slugify(title);
                 return (
-                  <Link key={_id} href={`/pulse/${titleStr}/${_id}`}>
+                  <Link key={_id} href={`/pulse/${titleStr}/${_id}`} className={styles.artLink}>
                     <article className={styles.artCont}>
                       <Image
                         src={thumbnail?.photo}
@@ -59,13 +76,13 @@ const HomeArticle = () => {
               })}
             </>
           ) : (
-            <p>{"No Artilcle/News Found"}</p>
+            <p className={styles.emptyState}>No articles found.</p>
           )}
         </div>
       )}
       <div className={styles.seeAllArt}>
         <Link href={"/articles"}>
-          <button className="seeAllArtBtn">See All Article</button>
+          <button>View all articles</button>
         </Link>
       </div>
     </section>
