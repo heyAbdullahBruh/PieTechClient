@@ -1,4 +1,4 @@
-import Skeleton from "@/components/skeleton/Skeleton";
+import HomeCardSkeleton from "@/components/skeleton/HomeCardSkeleton";
 import { api } from "@/data/api";
 import { slugify } from "@/utility/slugify";
 import Link from "next/link";
@@ -36,20 +36,7 @@ const HomeWork = () => {
       {loading ? (
         <section className={styles.workShow}>
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className={styles.projTemp} style={{ padding: "0" }}>
-              <Skeleton
-                style={{
-                  width: "100%",
-                  height: "var(--card-image-height, 200px)",
-                  borderBottomRightRadius: 0,
-                  borderBottomLeftRadius: 0,
-                }}
-              />
-              <div style={{ padding: "1rem", flex: 1, width: "100%", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <Skeleton style={{ height: "1.2rem", width: "90%" }} />
-                <Skeleton style={{ height: "1.2rem", width: "70%" }} />
-              </div>
-            </div>
+            <HomeCardSkeleton key={n} />
           ))}
         </section>
       ) : (

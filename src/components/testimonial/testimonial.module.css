@@ -1,11 +1,18 @@
 .testimonialSection {
   background-color: var(--color-surface);
-  padding: 4rem 1rem;
+  padding: 4rem var(--section-padding-x, 2rem);
   text-align: center;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   border-radius: var(--card-border-radius);
+}
+
+@media (min-width: 1280px) {
+  .testimonialSection {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .container {

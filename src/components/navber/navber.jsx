@@ -97,12 +97,13 @@ const Navber = () => {
                     <button>Articles</button>
                   </Link>
                 </li>
-                <li className={styles.aboutListItem}>
-                  <button
-                    onMouseOver={() => setAboutListOpen(true)}
-                    onClick={() => setAboutListOpen(false)}
-                  >
-                    About
+                <li
+                  className={`${styles.aboutListItem} ${getActive("/about")}`}
+                  onMouseEnter={() => setAboutListOpen(true)}
+                  onMouseLeave={() => setAboutListOpen(false)}
+                >
+                  <button className={styles.navBtn}>
+                    About <span className={styles.chevron}>▾</span>
                   </button>
                   <ul
                     className={`${styles.aboutList} ${aboutListOpen ? styles.show : ""

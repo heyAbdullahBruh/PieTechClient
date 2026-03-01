@@ -25,6 +25,7 @@
   --card-image-height: 11rem;
   --card-min-height: 18rem;
   --card-border-radius: 8px;
+  --section-padding-x: 2rem;
   --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --transition-card: transform 0.4s var(--ease-out-smooth), box-shadow 0.4s var(--ease-out-smooth);
 }
