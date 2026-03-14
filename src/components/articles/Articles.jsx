@@ -68,12 +68,13 @@ const Articles = () => {
   const total = totalPages(filteredArticles.length);
 
   return (
-    <aside className={styles.articles}>
+    <section className={`${styles.articles} animate-fade`}>
       <section className={styles.artlBannerSec}>
         <div className={styles.heroCont}>
+          <span className={styles.heroLabel}>Our Voice</span>
           <h1>Insights & News</h1>
           <p>
-            Explore our latest thoughts on technology, design, and innovation.
+            Exploring the intersection of technology, design, and business strategy to empower your digital journey.
           </p>
         </div>
       </section>
@@ -198,7 +199,7 @@ const Articles = () => {
           />
         </section>
       )}
-    </aside>
+    </section>
   );
 };
 

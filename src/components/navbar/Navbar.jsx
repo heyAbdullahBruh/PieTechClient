@@ -89,16 +89,16 @@ const Navbar = () => {
                   <Link href="/services">Services</Link>
                 </li>
                 <li className={getActive("/our-works")}>
-                  <Link href="/our-works">Work</Link>
+                  <Link href="/our-works">Portfolio</Link>
                 </li>
                 <li className={getActive("/articles")}>
-                  <Link href="/articles">Articles</Link>
+                  <Link href="/articles">Insights</Link>
                 </li>
                 <li className={getActive("/about")}>
                   <Link href="/about">About</Link>
                 </li>
-                <li className={getActive("/contact-us")}>
-                  <Link href="/contact-us">Contact</Link>
+                <li className={`${getActive("/contact-us")} ${styles.ctaLink}`}>
+                  <Link href="/contact-us">Get Started</Link>
                 </li>
                 <li>
                   <ThemeToggle />
@@ -133,12 +133,12 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link href="/our-works">
-                    <button className={getActive("/our-works")}>Work</button>
+                    <button className={getActive("/our-works")}>Portfolio</button>
                   </Link>
                 </li>
                 <li>
                   <Link href="/articles">
-                    <button className={getActive("/articles")}>Articles</button>
+                    <button className={getActive("/articles")}>Insights</button>
                   </Link>
                 </li>
                 <li>
@@ -148,8 +148,8 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link href="/contact-us">
-                    <button className={getActive("/contact-us")}>
-                      Contact
+                    <button className={`${getActive("/contact-us")} ${styles.mobileCta}`}>
+                      Get Started
                     </button>
                   </Link>
                 </li>

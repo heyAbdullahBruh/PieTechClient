@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/Footer/foooter";
+import Footer from "@/components/Footer/Footer";
 import CookiePopup from "@/components/AcceptCookie/CookiePopup";
 import ScrollToTop from "@/components/ScrollToTop";
 import ThemeProvider from "@/components/theme/ThemeProvider";

@@ -184,9 +184,11 @@
 }
 
 .slideCont {
-    background: var(--color-surface);
+    background: radial-gradient(circle at bottom, var(--color-surface) 0%, var(--color-bg) 100%);
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 2.5rem 0;
+    position: relative;
+    border-bottom: 1px solid var(--color-surface-elevated);
 }
 
 .sliderTrack {
@@ -237,13 +239,17 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 2rem var(--section-padding-x, 2rem);
-    background-color: var(--color-surface);
-    border-radius: 8px;
+    padding: 4rem var(--section-padding-x, 2rem);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 4rem auto;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 1280px) {
@@ -329,13 +335,17 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 2rem var(--section-padding-x, 2rem);
-    background-color: var(--color-surface);
-    border-radius: 8px;
+    padding: 4rem var(--section-padding-x, 2rem);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 4rem auto;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 1280px) {
@@ -427,14 +437,15 @@
 
 /* CTA Section */
 .ctaSection {
-    background-color: var(--color-surface);
-    padding: 4rem var(--section-padding-x, 2rem);
-    margin: 2rem auto;
+    background: radial-gradient(circle at center, #0ea5e910 0%, var(--color-bg) 100%);
+    padding: 8rem var(--section-padding-x, 2rem);
+    margin: 4rem auto;
     color: var(--color-text);
     text-align: center;
     width: 100%;
     max-width: 1280px;
-    border-radius: var(--card-border-radius);
+    position: relative;
+    border-top: 1px solid var(--color-surface-elevated);
 }
 
 @media (min-width: 1280px) {

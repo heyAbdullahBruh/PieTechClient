@@ -1,31 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import notFoundImg from "@/gallery/siteImgs/404NotFound.svg";
-export default function CustomNotFound() {
+import styles from "./notFound.module.css";
+
+export default function NotFound() {
   return (
-    <section
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        backgroundColor: "#032b4d93",
-        padding: "2rem 0",
-      }}
-    >
-      <Image
-        src={notFoundImg}
-        width={400}
-        height={300}
-        alt="notfoundImage"
-        style={{ width: "50%", height: "auto", objectFit: "cover" }}
-      />
-      <Link href={"/"}>
-        <button style={{ cursor: "pointer", borderRadius: "2rem" }}>
-          back to home
-        </button>
-      </Link>
-    </section>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.glitchWrapper}>
+          <h1 className={styles.errorCode}>404</h1>
+        </div>
+        <h2 className={styles.title}>You&apos;ve drifted into the void.</h2>
+        <p className={styles.message}>
+          The page you are looking for has been moved, deleted, or never existed in this dimension.
+        </p>
+        <Link href="/" className={styles.homeBtn}>
+          Back to Reality
+        </Link>
+      </div>
+      <div className={styles.background}>
+        <div className={styles.circle1} />
+        <div className={styles.circle2} />
+      </div>
+    </div>
   );
 }

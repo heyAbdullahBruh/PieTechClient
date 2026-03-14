@@ -13,9 +13,16 @@
     --color-text-secondary: #334155;
     --color-muted: #64748b;
     --color-border: #e2e8f0;
+    --glass-background: rgba(255, 255, 255, 0.95);
+    --glass-border: 1px solid rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     --banner-overlay: linear-gradient(135deg, rgba(219, 234, 254, 0.8), rgba(248, 250, 252, 0.85));
     --banner-text: #0f172a;
     --banner-text-secondary: #334155;
+    --color-footer-bg: #ffffff;
+    --color-footer-text: #030c13;
+    --color-footer-text-muted: #475569;
+    --color-footer-border: rgba(0, 0, 0, 0.08);
 
 
     /* Typography */
@@ -38,11 +45,14 @@
         transform 0.4s var(--ease-out-smooth),
         box-shadow 0.4s var(--ease-out-smooth);
 
-    /* Premium Effects */
-    --glass-background: rgba(var(--color-bg-rgb), 0.7);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     --premium-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+
+    /* Atmospheric Tokens */
+    --atm-bg: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 100%);
+    --atm-bg-alt: radial-gradient(circle at bottom, var(--color-surface) 0%, var(--color-bg) 100%);
+    --atm-card-bg: rgba(255, 255, 255, 0.02);
+    --atm-card-blur: 20px;
+    --atm-card-border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="dark"] {
@@ -64,6 +74,10 @@
 
     --glass-background: rgba(15, 23, 42, 0.8);
     --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+    --color-footer-bg: #030c13;
+    --color-footer-text: #f8fafc;
+    --color-footer-text-muted: #94a3b8;
+    --color-footer-border: rgba(255, 255, 255, 0.08);
 }
 
 
@@ -111,10 +125,6 @@ nav {
     /* color: #032b4d93; */
 }
 
-
-footer {
-    background-color: #030303b0;
-}
 
 main {
     padding-top: 5.5rem;
@@ -442,4 +452,29 @@ button {
 
 .animate-slide-up {
     animation: slideUp 0.8s var(--ease-out-smooth) forwards;
+}
+
+/* Atmospheric Global Utilities */
+.atm-bg {
+    background: var(--atm-bg);
+}
+
+.atm-bg-alt {
+    background: var(--atm-bg-alt);
+}
+
+.atm-card {
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    transition: all 0.4s var(--ease-out-smooth);
+}
+
+.atm-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--color-accent);
 }

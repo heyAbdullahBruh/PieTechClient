@@ -1,11 +1,11 @@
 .testimonialSection {
-    background-color: var(--color-surface);
-    padding: 4rem var(--section-padding-x, 2rem);
+    background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 100%);
+    padding: 8rem var(--section-padding-x, 2rem);
     text-align: center;
     width: 100%;
-    max-width: 1280px;
     margin: 0 auto;
-    border-radius: var(--card-border-radius);
+    position: relative;
+    isolation: isolate;
 }
 
 @media (min-width: 1280px) {
@@ -29,18 +29,18 @@
 }
 
 .card {
-    background: var(--color-surface-elevated);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: var(--card-border-radius);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
     width: 85%;
     max-width: 36rem;
     min-height: 14rem;
     margin: 0 auto;
-    padding: 2rem 2.25rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    transition:
-        box-shadow 0.4s var(--ease-out-smooth),
-        transform 0.4s var(--ease-out-smooth);
+    padding: 3rem;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s var(--ease-out-smooth);
 }
 
 .review {
