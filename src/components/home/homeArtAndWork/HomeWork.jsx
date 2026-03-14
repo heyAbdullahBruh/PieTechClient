@@ -2,16 +2,17 @@ import HomeCardSkeleton from "@/components/skeleton/HomeCardSkeleton";
 import { api } from "@/data/api";
 import { slugify } from "@/utility/slugify";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./homeArtWrk.module.css";
 import Image from "next/image";
+import { useLoading } from "@/customHooks";
 
 const HomeWork = () => {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { loading, startLoading, stopLoading } = useLoading();
 
-  const fetchProjData = async () => {
-    setLoading(true);
+  const fetchProjData = useCallback(async () => {
+    startLoading();
     try {
       const response = await fetch(`${api}/project/allProjects`, {
         cache: "no-store",
@@ -21,13 +22,13 @@ const HomeWork = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
-  };
+  }, [startLoading, stopLoading]);
 
   useEffect(() => {
     fetchProjData();
-  }, []);
+  }, [fetchProjData]);
 
   return (
     <section className={styles.homeWork}>
@@ -47,13 +48,18 @@ const HomeWork = () => {
             // console.log(data);
             const titleLink = slugify(title);
             return (
-              <div
-                className={styles.projTemp}
-                key={_id}
-              >
-                <Image src={thumbnail?.photo} alt={`${title} image`} width={300} height={200} />
+              <div className={styles.projTemp} key={_id}>
+                <Image
+                  src={thumbnail?.photo}
+                  alt={`${title} image`}
+                  width={300}
+                  height={200}
+                />
                 <h4>{title}</h4>
-                <Link href={`/work/${titleLink}/${_id}`} className={styles.projectLink}>
+                <Link
+                  href={`/work/${titleLink}/${_id}`}
+                  className={styles.projectLink}
+                >
                   <button>View project</button>
                 </Link>
               </div>

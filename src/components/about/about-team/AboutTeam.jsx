@@ -1,17 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./aboutTeam.module.css";
 import { api } from "@/data/api";
-import Skeleton from "@/components/skeleton/Skeleton";
+import SmallLoad from "@/components/smallLaoding/smallLoad";
 import Image from "next/image";
 import Link from "next/link";
+import { useLoading } from "@/customHooks";
 
 const AboutTeam = () => {
   const [Members, setMembers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { loading, startLoading, stopLoading } = useLoading();
 
-  const fetchTeamMemberslData = async () => {
-    setLoading(true);
+  const fetchTeamMemberslData = useCallback(async () => {
+    startLoading();
     try {
       const response = await fetch(`${api}/team/getMembers`, {
         cache: "no-store",
@@ -21,13 +22,13 @@ const AboutTeam = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
-  };
+  }, [startLoading, stopLoading]);
 
   useEffect(() => {
     fetchTeamMemberslData();
-  }, []);
+  }, [fetchTeamMemberslData]);
   return (
     <aside className={styles.aboutTeam}>
       <section className={styles.teamHero}>
@@ -40,15 +41,7 @@ const AboutTeam = () => {
         <div className={styles.gridContainer}>
           {loading ? (
             <div className={styles.loadingContainer}>
-              <div className={styles.skeletonGrid}>
-                {[1, 2, 3, 4].map((n) => (
-                  <div key={n} className={styles.skeletonCard}>
-                    <Skeleton style={{ width: 200, height: 200, borderRadius: "50%" }} />
-                    <Skeleton style={{ width: "60%", height: "1.5rem", marginTop: "1rem" }} />
-                    <Skeleton style={{ width: "40%", height: "1rem", marginTop: "0.5rem" }} />
-                  </div>
-                ))}
-              </div>
+              <SmallLoad />
             </div>
           ) : (
             <div className={styles.members}>
@@ -81,8 +74,8 @@ const AboutTeam = () => {
         <div className={styles.ctaContainer}>
           <h2>Want to join our vision?</h2>
           <p>
-            We&apos;re always looking for talented minds to help us build the future.
-            Let&apos;s create something extraordinary together.
+            We&apos;re always looking for talented minds to help us build the
+            future. Let&apos;s create something extraordinary together.
           </p>
           <Link href="/contact-us" className={styles.ctaBtn}>
             Let&apos;s Collaborate

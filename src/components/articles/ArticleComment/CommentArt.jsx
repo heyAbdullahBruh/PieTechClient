@@ -3,37 +3,22 @@ import styles from "./comment.module.css";
 import { api } from "@/data/api";
 import ToastP from "@/components/popupToast/ToastP";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
+import { useForm, useToast, useLoading } from "@/customHooks";
 
 const CommentArt = ({ articleId }) => {
-  const [popInfo, setPopInfo] = useState({
-    trigger: null,
-    type: null,
-    message: null,
-  });
+  const { popInfo, showToast } = useToast();
   const [newComment, setNewComment] = useState({});
   const [comments, setComments] = useState([]);
-
-  //   Add/Post A Comment --->
-  const [commentData, setCommentData] = useState({
+  const { formData, handleChange, resetForm } = useForm({
     name: "",
     email: "",
     comment: "",
   });
+  const { loading, startLoading, stopLoading } = useLoading();
+  const { name, email, comment } = formData;
 
-  const [loading, setLoading] = useState(false);
-
-  const handleCollectCommentData = (e) => {
-    setCommentData((prev) => {
-      return {
-        ...prev,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
-  const { name, email, comment } = commentData;
-
-  const hadnlePickComment = async (artId) => {
-    setLoading(true);
+  const handlePickComment = async (artId) => {
+    startLoading();
     try {
       const response = await fetch(`${api}/article/comments/add/${artId}`, {
         method: "POST",
@@ -46,29 +31,20 @@ const CommentArt = ({ articleId }) => {
       });
 
       const data = await response.json();
-      setPopInfo({
-        trigger: Date.now(),
-        type: data?.success,
-        message: data?.message,
-      });
+      showToast(data?.message, data?.success);
       if (data?.success) {
         setTimeout(() => {
           setNewComment(data?.comment);
-          setCommentData({
-            name: "",
-            email: "",
-            comment: "",
-          });
+          resetForm();
         }, 2000);
       }
     } catch (error) {
       console.log(error.message);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   };
 
-  //   Get A Comments --->
   const [cLoading, setCLoading] = useState(false);
 
   const fetchComments = async (artId) => {
@@ -99,17 +75,19 @@ const CommentArt = ({ articleId }) => {
     }
   }, [newComment]);
 
-  console.log(comments);
   return (
     <div className={styles.commentArt}>
-      <h1>Comments --{">"}</h1>
+      <h2 className={styles.commentTitle}>
+        Comments ({comments?.length || 0})
+      </h2>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          hadnlePickComment(articleId);
+          handlePickComment(articleId);
         }}
       >
-        <div className={styles.nameEamil}>
+        <div className={styles.nameEmail}>
           <label>
             <span>
               Name<sup>*</sup>
@@ -117,11 +95,10 @@ const CommentArt = ({ articleId }) => {
             <input
               type="text"
               name="name"
-              id="name"
-              placeholder="Name"
+              placeholder="Your name"
               value={name}
               required
-              onChange={handleCollectCommentData}
+              onChange={handleChange}
             />
           </label>
           <label>
@@ -131,36 +108,38 @@ const CommentArt = ({ articleId }) => {
             <input
               type="email"
               name="email"
-              id="email"
-              placeholder="Email"
+              placeholder="your@email.com"
               required
               value={email}
-              onChange={handleCollectCommentData}
+              onChange={handleChange}
             />
           </label>
         </div>
-        <label id={styles.cLabel}>
+        <label>
           <span>
             Comment<sup>*</sup>
           </span>
           <textarea
             name="comment"
-            id="comment"
             placeholder="Share your thoughts about this article..."
             required
             value={comment}
-            onChange={handleCollectCommentData}
-          ></textarea>
+            onChange={handleChange}
+          />
         </label>
         <button type="submit" disabled={loading}>
-          {loading ? <SmallLoad /> : "Drop Your Comment"}
+          {loading ? <SmallLoad /> : "Post Comment"}
         </button>
       </form>
-      <hr />
-      {/* lorem100  */}
+
+      <hr className={styles.separator} />
+
       <div className={styles.commentCont}>
         {comments?.length > 0 ? (
           <>
+            <p className={styles.commentCount}>
+              {comments.length} Comment{comments.length !== 1 ? "s" : ""}
+            </p>
             {comments?.map((c) => (
               <article key={c?._id}>
                 <div className={styles.cProfile}>
@@ -174,7 +153,21 @@ const CommentArt = ({ articleId }) => {
             ))}
           </>
         ) : (
-          <p>No Comment Found</p>
+          <div className={styles.noComments}>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <p>No comments yet. Be the first to share your thoughts!</p>
+          </div>
         )}
       </div>
 

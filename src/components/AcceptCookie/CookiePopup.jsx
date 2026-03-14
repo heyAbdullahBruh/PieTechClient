@@ -1,14 +1,14 @@
-// components/CookiePopup.jsx
 "use client";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./cookiePopup.module.css";
 import { api } from "@/data/api";
 import SmallLoad from "../smallLaoding/smallLoad";
+import { useLoading } from "@/customHooks";
 
 export default function CookiePopup() {
   const [showPopup, setShowPopup] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { loading, startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
     const consent = Cookies.get("cookie_accepted");
@@ -18,7 +18,7 @@ export default function CookiePopup() {
   }, []);
 
   const handleAccept = async () => {
-    setLoading(true);
+    startLoading();
     try {
       await fetch(`${api}/userRecord`, {
         method: "POST",
@@ -28,12 +28,12 @@ export default function CookiePopup() {
     } catch (error) {
       return;
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   };
 
   const handleDecline = async () => {
-    setLoading(true);
+    startLoading();
     try {
       await fetch(`${api}/userRecord`, {
         method: "POST",
@@ -43,7 +43,7 @@ export default function CookiePopup() {
     } catch (error) {
       return;
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   };
 
@@ -55,8 +55,8 @@ export default function CookiePopup() {
         <h4>🍪 PieTech Cookie Consent</h4>
         <p>
           We use cookies to improve your experience and analyze traffic on
-          PieTech. By clicking &quot;Accept&quot;, you consent to our cookie policy. To
-          learn more, see our full policy.
+          PieTech. By clicking &quot;Accept&quot;, you consent to our cookie
+          policy. To learn more, see our full policy.
         </p>
         <div className={styles.buttonGroup}>
           {loading ? (

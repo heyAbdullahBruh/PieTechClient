@@ -10,30 +10,20 @@ import SmallLoad from "@/components/smallLaoding/smallLoad";
 import ToastP from "@/components/popupToast/ToastP";
 import Image from "next/image";
 import TextEditor from "@/components/textEditor/TextEditor";
-// import RichTextEditor from "@/components/textEditor/RichTextEditor";
+import { useForm, useToast, useLoading } from "@/customHooks";
 
 const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
   const { accessToken } = useDashAuth();
-  const [loading, setLoading] = useState(false);
-
-  //   console.log(artData?._id);
-
-  const [popInfo, setPopInfo] = useState({
-    trigger: null,
-    type: null,
-    message: null,
-  });
-  const [articleData, setArticleData] = useState({
-    title: "",
-    hashtags: "",
-    articleType: "",
-    content: "",
-  });
-  const { title, content, hashtags, articleType } = articleData;
-
-  const colletArticleData = (e) => {
-    setArticleData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const { loading, startLoading, stopLoading } = useLoading();
+  const { popInfo, showToast } = useToast();
+  const { formData, handleChange, setField, setMultipleFields, resetForm } =
+    useForm({
+      title: "",
+      hashtags: "",
+      articleType: "",
+      content: "",
+    });
+  const { title, content, hashtags, articleType } = formData;
 
   const [thumb, setThumb] = useState([]);
   const [thumbImg, setThumbImg] = useState("");
@@ -47,7 +37,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
 
   useEffect(() => {
     if (artData) {
-      setArticleData({
+      setMultipleFields({
         title: artData?.title,
         content: artData?.content,
         articleType: artData?.articleType,
@@ -55,7 +45,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
       });
       setThumbImg(artData?.thumbnail?.photo);
     }
-  }, [artData]);
+  }, [artData, setMultipleFields]);
 
   useEffect(() => {
     return () => {
@@ -64,45 +54,35 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
   }, [thumbImg]);
 
   const handleUpdateArt = async (artId) => {
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("thumbnail", thumb);
-    formData.append("hashtags", hashtags);
-    formData.append("articleType", articleType);
-    // console.log(articleData);
+    const formDataToSend = new FormData();
+    formDataToSend.append("title", title);
+    formDataToSend.append("content", content);
+    formDataToSend.append("thumbnail", thumb);
+    formDataToSend.append("hashtags", hashtags);
+    formDataToSend.append("articleType", articleType);
 
-    setLoading(true);
+    startLoading();
     try {
       const res = await fetch(`${api}/article/update/${artId}`, {
         method: "PATCH",
         headers: { authorization: `Bearer ${accessToken}` },
-        body: formData,
+        body: formDataToSend,
       });
       const data = await res.json();
-      setPopInfo({
-        trigger: Date.now(),
-        type: data?.success,
-        message: data?.message,
-      });
+      showToast(data?.message, data?.success);
 
       onUpdate(data?.article);
       if (data?.success) {
         setTimeout(() => {
           setOpen(false);
           setThumb([]);
-          setArticleData({
-            title: "",
-            hashtags: "",
-            articleType: "",
-            content: "",
-          });
+          resetForm();
         }, 2000);
       }
     } catch (err) {
       console.error("Update failed", err);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   };
 
@@ -128,10 +108,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
                 onChange={(e) => {
                   const wordArray = e.target.value.trim().split(/\s+/);
                   if (wordArray.length <= 20) {
-                    setArticleData((prev) => ({
-                      ...prev,
-                      title: e.target.value,
-                    }));
+                    setField("title", e.target.value);
                   }
                 }}
               ></textarea>
@@ -147,10 +124,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
                   onChange={(e) => {
                     const wordArray = e.target.value.trim().split(/\s+/);
                     if (wordArray.length <= 10) {
-                      setArticleData((prev) => ({
-                        ...prev,
-                        hashtags: e.target.value,
-                      }));
+                      setField("hashtags", e.target.value);
                     }
                   }}
                 ></textarea>
@@ -162,7 +136,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
               <label id={styles.type}>
                 <select
                   name="articleType"
-                  onChange={colletArticleData}
+                  onChange={handleChange}
                   value={articleType}
                 >
                   <option value="">--Select Article Type --</option>
@@ -196,9 +170,7 @@ const UpdateArticle = ({ setOpen, onUpdate, artData }) => {
             <label id={styles.artDesc}>
               <TextEditor
                 value={content}
-                onChange={(value) =>
-                  setArticleData((prev) => ({ ...prev, content: value }))
-                }
+                onChange={(value) => setField("content", value)}
               />
             </label>
 

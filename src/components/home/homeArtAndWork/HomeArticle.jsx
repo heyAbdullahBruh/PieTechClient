@@ -3,15 +3,16 @@ import { api } from "@/data/api";
 import { slugify } from "@/utility/slugify";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./homeArtWrk.module.css";
+import { useLoading } from "@/customHooks";
 
 const HomeArticle = () => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { loading, startLoading, stopLoading } = useLoading();
 
-  const fetchArticles = async () => {
-    setLoading(true);
+  const fetchArticles = useCallback(async () => {
+    startLoading();
     try {
       const response = await fetch(`${api}/article/getAll`, {
         cache: "no-store",
@@ -21,13 +22,13 @@ const HomeArticle = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
-  };
+  }, [startLoading, stopLoading]);
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+  }, [fetchArticles]);
   return (
     <section className={styles.homeArticle}>
       <div className={styles.hArtHead}>
@@ -47,7 +48,11 @@ const HomeArticle = () => {
                 const { _id, title, thumbnail, articleType } = art;
                 const titleStr = slugify(title);
                 return (
-                  <Link key={_id} href={`/pulse/${titleStr}/${_id}`} className={styles.artLink}>
+                  <Link
+                    key={_id}
+                    href={`/pulse/${titleStr}/${_id}`}
+                    className={styles.artLink}
+                  >
                     <article className={styles.artCont}>
                       <Image
                         src={thumbnail?.photo}

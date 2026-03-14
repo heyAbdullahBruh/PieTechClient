@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./article.module.css";
 import { api } from "@/data/api";
 import Image from "next/image";
@@ -8,49 +8,58 @@ import Link from "next/link";
 import { slugify } from "@/utility/slugify";
 import ArticleCardSkeleton from "../skeleton/ArticleCardSkeleton";
 import Skeleton from "../skeleton/Skeleton";
+import { useLoading } from "@/customHooks";
 
 const Articles = () => {
   const [articleType, setArticleType] = useState("");
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { loading, startLoading, stopLoading } = useLoading();
 
-  const fetchArticles = async (artType) => {
-    setLoading(true);
+  const fetchArticles = useCallback(async (artType) => {
+    startLoading();
     try {
       const response = await fetch(
         `${api}/article/getAll?articleType=${artType}`,
         {
           cache: "no-store",
-        }
+        },
       );
       const data = await response.json();
       setArticles(data?.articles);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
-  };
+  }, [startLoading, stopLoading]);
 
   useEffect(() => {
     fetchArticles(articleType);
-  }, [articleType]);
+  }, [articleType, fetchArticles]);
 
   return (
     <aside className={styles.articles}>
       <section className={styles.artlBannerSec}>
         <div className={styles.heroCont}>
           <h1>Insights & News</h1>
-          <p>Explore our latest thoughts on technology, design, and innovation.</p>
+          <p>
+            Explore our latest thoughts on technology, design, and innovation.
+          </p>
         </div>
       </section>
       {loading ? (
         <section className={styles.artlShowSec}>
           <div className={styles.filterBar}>
             <div className={styles.artclAct}>
-              <Skeleton style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }} />
-              <Skeleton style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }} />
-              <Skeleton style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }} />
+              <Skeleton
+                style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }}
+              />
+              <Skeleton
+                style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }}
+              />
+              <Skeleton
+                style={{ width: "6rem", height: "2.5rem", borderRadius: "8px" }}
+              />
             </div>
           </div>
           <div className={styles.articleGrid}>
@@ -93,7 +102,11 @@ const Articles = () => {
                   const { _id, title, thumbnail, hashtags, articleType } = art;
                   const titleStr = slugify(title);
                   return (
-                    <Link key={_id} href={`/pulse/${titleStr}/${_id}`} className={styles.artLink}>
+                    <Link
+                      key={_id}
+                      href={`/pulse/${titleStr}/${_id}`}
+                      className={styles.artLink}
+                    >
                       <article className={styles.artCard}>
                         <div className={styles.cardImage}>
                           <Image
@@ -102,7 +115,9 @@ const Articles = () => {
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt={title}
                           />
-                          <span className={styles.categoryBadge}>{articleType}</span>
+                          <span className={styles.categoryBadge}>
+                            {articleType}
+                          </span>
                         </div>
                         <div className={styles.cardContent}>
                           <h4>{title}</h4>
@@ -111,7 +126,9 @@ const Articles = () => {
                               <span key={`${h},${i}`}>#{h}</span>
                             ))}
                           </div>
-                          <span className={styles.readMore}>Read article →</span>
+                          <span className={styles.readMore}>
+                            Read article →
+                          </span>
                         </div>
                       </article>
                     </Link>
