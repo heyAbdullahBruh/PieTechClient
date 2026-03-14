@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import notFoundImg from "@/gallary/siteImgs/404NotFound.svg";
+import notFoundImg from "@/gallery/siteImgs/404NotFound.svg";
 export default function CustomNotFound() {
   return (
     <section

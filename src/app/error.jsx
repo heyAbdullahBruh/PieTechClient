@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { useEffect } from "react";
-import erroImg from "@/gallary/siteImgs/500error.svg";
+import erroImg from "@/gallery/siteImgs/500error.svg";
 
 export default function Error({ error, reset }) {
   useEffect(() => {

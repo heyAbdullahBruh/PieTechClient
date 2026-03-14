@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./navber.module.css";
+import styles from "./Navbar.module.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 
-const Navber = () => {
+const Navbar = () => {
   const pathname = usePathname();
   const [aboutListOpen, setAboutListOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -69,7 +69,7 @@ const Navber = () => {
   }, []);
 
   return (
-    <section className={styles.navber}>
+    <section className={styles.navbar}>
       <div className={styles.navContainer}>
         <div className={styles.navLogo}>
           <Link href={"/"}>
@@ -83,34 +83,22 @@ const Navber = () => {
             <div className={styles.navPc}>
               <ul className={styles.navPList}>
                 <li className={getActive("/")}>
-                  <Link href="/">
-                    <button>Home</button>
-                  </Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li className={getActive("/services")}>
-                  <Link href="/services">
-                    <button>Services</button>
-                  </Link>
+                  <Link href="/services">Services</Link>
                 </li>
                 <li className={getActive("/our-works")}>
-                  <Link href="/our-works">
-                    <button>Work</button>
-                  </Link>
+                  <Link href="/our-works">Work</Link>
                 </li>
                 <li className={getActive("/articles")}>
-                  <Link href="/articles">
-                    <button>Articles</button>
-                  </Link>
+                  <Link href="/articles">Articles</Link>
                 </li>
                 <li className={getActive("/about")}>
-                  <Link href="/about">
-                    <button>About</button>
-                  </Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li className={getActive("/contact-us")}>
-                  <Link href="/contact-us">
-                    <button>Contact</button>
-                  </Link>
+                  <Link href="/contact-us">Contact</Link>
                 </li>
                 <li>
                   <ThemeToggle />
@@ -177,4 +165,4 @@ const Navber = () => {
   );
 };
 
-export default Navber;
+export default Navbar;

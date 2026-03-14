@@ -1,5 +1,5 @@
-import growup from "@/gallary/siteImgs/growup.svg";
-import abtImg from "@/gallary/siteImgs/websiteTemp.svg";
+import growup from "@/gallery/siteImgs/growup.svg";
+import abtImg from "@/gallery/siteImgs/websiteTemp.svg";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../home.module.css";

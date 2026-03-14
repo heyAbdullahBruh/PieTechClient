@@ -89,7 +89,7 @@ const About = () => {
   ];
 
   return (
-    <aside className={styles.about}>
+    <section className={`${styles.about} animate-fade`}>
       {/* Hero Section */}
       <section className={styles.aboutHeader}>
         <video
@@ -209,7 +209,7 @@ const About = () => {
           </div>
         </section>
       </section>
-    </aside>
+    </section>
   );
 };
 

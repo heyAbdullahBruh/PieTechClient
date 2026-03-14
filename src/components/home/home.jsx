@@ -11,7 +11,7 @@ import FAQ from "./faq/FAQ";
 
 const Home = () => {
   return (
-    <aside className={styles.home}>
+    <section className={`${styles.home} animate-fade`}>
       <Hero />
       <TrustedComp />
       <HomeAbout />
@@ -30,7 +30,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-    </aside>
+    </section>
   );
 };
 export default Home;

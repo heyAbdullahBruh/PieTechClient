@@ -64,7 +64,7 @@ const CreateProject = ({ setOpen, setData }) => {
     projectFormData.append("pLink", pLink);
     projectFormData.append("thumbnail", thumb);
     gallery.forEach((img) => {
-      projectFormData.append("gallary", img.file);
+      projectFormData.append("gallery", img.file);
     });
 
     try {
@@ -142,7 +142,7 @@ const CreateProject = ({ setOpen, setData }) => {
 
                 <input
                   type="file"
-                  name="gallary"
+                  name="gallery"
                   accept="image/*"
                   onChange={(e) => addGalleryImages(e.target.files)}
                   multiple

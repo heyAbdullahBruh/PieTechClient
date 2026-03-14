@@ -6,16 +6,16 @@ import { useState } from "react";
 import Link from "next/link";
 
 const WorkDetails = ({ project }) => {
-  const { title, details, gallary, pLink } = project ? project : {};
+  const { title, details, gallery, pLink } = project ? project : {};
   const [currentImg, setCurrentImg] = useState(0);
 
-  const currentImage = gallary?.[currentImg];
+  const currentImage = gallery?.[currentImg];
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <Image
-          src={currentImage?.img || gallary?.[0]?.img || "/placeholder.jpg"}
+          src={currentImage?.img || gallery?.[0]?.img || "/placeholder.jpg"}
           alt={title || "Project"}
           fill
           className={styles.headerImage}
@@ -52,7 +52,7 @@ const WorkDetails = ({ project }) => {
                 className={styles.sliderBtn}
                 onClick={() =>
                   setCurrentImg((prev) =>
-                    prev === 0 ? gallary.length - 1 : prev - 1,
+                    prev === 0 ? gallery.length - 1 : prev - 1,
                   )
                 }
                 aria-label="Previous image"
@@ -60,13 +60,13 @@ const WorkDetails = ({ project }) => {
                 ←
               </button>
               <span className={styles.sliderCounter}>
-                {currentImg + 1} / {gallary.length}
+                {currentImg + 1} / {gallery.length}
               </span>
               <button
                 className={styles.sliderBtn}
                 onClick={() =>
                   setCurrentImg((prev) =>
-                    prev === gallary.length - 1 ? 0 : prev + 1,
+                    prev === gallery.length - 1 ? 0 : prev + 1,
                   )
                 }
                 aria-label="Next image"
@@ -76,7 +76,7 @@ const WorkDetails = ({ project }) => {
             </div>
 
             <div className={styles.thumbnailGrid}>
-              {gallary?.map((item, idx) => (
+              {gallery?.map((item, idx) => (
                 <div
                   className={`${styles.thumbnail} ${
                     idx === currentImg ? styles.active : ""

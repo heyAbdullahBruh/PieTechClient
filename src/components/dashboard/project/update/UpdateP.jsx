@@ -62,7 +62,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
         pLink: data?.pLink,
       });
       setThumbImg(data?.thumbnail?.photo);
-      setPrevGallery(data?.gallary);
+      setPrevGallery(data?.gallery);
     }
   }, [data, setMultipleFields]);
 
@@ -81,7 +81,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
 
         const data = await res.json();
         if (data?.success) {
-          setPrevGallery(data?.gallary);
+          setPrevGallery(data?.gallery);
         }
       } catch (err) {
         console.error("Cutting Failed", err);
@@ -101,7 +101,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
     projectFormData.append("pLink", pLink);
 
     gallery.forEach((img) => {
-      projectFormData.append("gallary", img.file);
+      projectFormData.append("gallery", img.file);
     });
 
     try {
@@ -188,7 +188,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
                   <span>Project Gallery:</span>
                   <input
                     type="file"
-                    name="gallary"
+                    name="gallery"
                     accept="image/*"
                     onChange={(e) => addGalleryImages(e.target.files)}
                     multiple

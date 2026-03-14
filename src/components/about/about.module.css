@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    background-image: url("../../gallary/siteImgs/busyOffice.avif");
+    background-image: url("../../gallery/siteImgs/busyOffice.avif");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
