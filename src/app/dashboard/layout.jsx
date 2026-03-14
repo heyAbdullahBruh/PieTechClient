@@ -7,9 +7,5 @@ export const metadata = {
 };
 
 export default async function DashBoardLayout({ children }) {
-  try {
-    return <DashboardAuthWrapper>{children}</DashboardAuthWrapper>;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  return <DashboardAuthWrapper>{children}</DashboardAuthWrapper>;
 }

@@ -47,7 +47,7 @@ const Project = () => {
 
   const handleProjectUpdate = (updatedProj) => {
     setProjects((prev) =>
-      prev.map((p) => (p._id === updatedProj._id ? updatedProj : p))
+      prev.map((p) => (p._id === updatedProj._id ? updatedProj : p)),
     );
   };
 
@@ -108,7 +108,9 @@ const Project = () => {
                   </tbody>
                 </table>
               ) : (
-                <p style={{color:'#ff0263',fontWeight:'bold'}}>No longer project Data</p>
+                <p style={{ color: "#ff0263", fontWeight: "bold" }}>
+                  No longer project Data
+                </p>
               )}
             </>
           )}

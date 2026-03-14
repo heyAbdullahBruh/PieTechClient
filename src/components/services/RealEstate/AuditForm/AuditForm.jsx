@@ -28,17 +28,20 @@ export default function AuditFormRl() {
       .then((res) => res.json())
       .then((data) => {
         if (data && data.success && data.calling_code) {
-          setCountryCode(data.calling_code);
+          const code = data.calling_code.startsWith("+")
+            ? data.calling_code
+            : `+${data.calling_code}`;
+          setCountryCode(code);
           setFormData((prev) => ({
             ...prev,
-            phone: data.calling_code,
+            phone: code,
           }));
         }
       })
       .catch(() => {
         setFormData((prev) => ({
           ...prev,
-          phone: countryCode,
+          phone: "+1",
         }));
       });
   }, []);

@@ -7,7 +7,6 @@
     padding: 1rem;
 }
 
-
 /* create article start ---> */
 .createArt {
     position: fixed;
@@ -22,7 +21,6 @@
     justify-content: center;
     align-items: center;
 }
-
 
 .closeBtn {
     position: relative;
@@ -46,7 +44,6 @@
     }
 }
 
-
 .createForm {
     display: flex;
     flex-direction: column;
@@ -62,7 +59,6 @@
     height: auto;
     max-height: none;
 }
-
 
 @keyframes popup {
     0% {
@@ -100,8 +96,6 @@
     border-radius: 8px;
 }
 
-
-
 .createForm form {
     width: 90%;
     display: flex;
@@ -109,7 +103,6 @@
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-
 }
 
 .createForm form #pTitle {
@@ -120,15 +113,13 @@
 .createForm form #pTitle textarea {
     width: 80%;
     height: auto;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1.4rem;
     border: none;
     resize: vertical;
     overflow-y: hidden;
-
 }
-
 
 .tagAndType {
     width: 100%;
@@ -161,7 +152,7 @@
     justify-content: center;
     align-items: center;
     width: 95%;
-    height: calc(90vw/2.5);
+    height: calc(90vw / 2.5);
     text-align: center;
     margin: 0;
     cursor: pointer;
@@ -179,7 +170,7 @@
     font-size: 1.5rem;
     color: #005383;
     background-color: #c2c2c2;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     z-index: 300;
 }
@@ -191,9 +182,8 @@
     z-index: 200;
 }
 
-
 /* Read article design start---> */
-.readArt{
+.readArt {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -201,8 +191,8 @@
     gap: 1rem;
 }
 
-.showArt{
-     display: flex;
+.showArt {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -210,16 +200,16 @@
     border: 2px solid #00ffff;
     padding: 1rem;
 }
-.showArt div{
-     display: flex;
+.showArt div {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 }
 
-.deleteBtn{
-    &:disabled{
+.deleteBtn {
+    &:disabled {
         background: none;
     }
 }

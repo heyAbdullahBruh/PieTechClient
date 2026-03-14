@@ -48,12 +48,12 @@ const WorkDetails = ({ project }) => {
 
         <div className={styles.slidCntrlByImg}>
           {gallary?.map((i, idx) => (
-            <img
+            <Image
               src={i?.img}
               alt={`slide-${idx + 1}`}
+              width={50}
+              height={30}
               style={{
-                width: "50px",
-                height: "30px",
                 objectFit: "cover",
                 borderRadius: ".2rem",
                 border: idx === currentImg ? "2px solid #04cef1" : "",
@@ -85,9 +85,9 @@ const WorkDetails = ({ project }) => {
       <div className={styles.ctaBox}>
         <h2>Have a similar project in mind?</h2>
         <p>
-          Let's bring your vision to life. Contact us today and get started!
+          Let&apos;s bring your vision to life. Contact us today and get started!
         </p>
-        <Link href='/contact-us'><button className={styles.ctaBtn}> Let's Start </button></Link>
+        <Link href='/contact-us'><button className={styles.ctaBtn}> Let&apos;s Start </button></Link>
       </div>
     </div>
   );

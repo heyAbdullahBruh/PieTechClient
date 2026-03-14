@@ -26,6 +26,7 @@ const AuditFormHotel = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const element = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,13 +36,13 @@ const AuditFormHotel = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);
@@ -135,7 +136,7 @@ const AuditFormHotel = () => {
         </p>
 
         <div className={styles.offerText}>
-          Send us your site → We'll check load speed, SEO, mobile, CTA design →
+          Send us your site → We&apos;ll check load speed, SEO, mobile, CTA design →
           You get a full PDF report, free.
         </div>
 

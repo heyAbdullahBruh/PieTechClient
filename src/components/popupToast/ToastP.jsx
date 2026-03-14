@@ -13,6 +13,7 @@ const ToastP = ({ popInfo }) => {
 
   useEffect(() => {
     if (trigger) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShow(true);
       const timer = setTimeout(() => {
         setShow(false);

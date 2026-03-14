@@ -188,7 +188,7 @@ const Services = () => {
           <div className={styles.wuDesc}>
             <h2>💎 Why Choose Pietenium?</h2>
             <p>
-              We're not just developers — we're your digital growth partners, committed to delivering high-quality solutions.
+              We&apos;re not just developers — we&apos;re your digital growth partners, committed to delivering high-quality solutions.
             </p>
             <ul>
               {whyUs.map((item, idx) => (

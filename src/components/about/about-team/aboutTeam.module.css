@@ -9,7 +9,7 @@
     width: 100%;
     height: 50vh;
     position: relative;
-    background-image: url('../../../gallary/siteImgs/team.webp');
+    background-image: url("../../../gallary/siteImgs/team.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
