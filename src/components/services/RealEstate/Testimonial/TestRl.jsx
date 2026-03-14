@@ -63,7 +63,7 @@ export default function TestimonialsOfRl() {
         <div className={styles.track}>
           {testimonials.map((t, i) => (
             <div key={i} className={styles.card}>
-              <p>"{t.review}"</p>
+              <p>&quot;{t.review}&quot;</p>
               <h4>
                 {t.name} — {t.job}
               </h4>

@@ -44,10 +44,9 @@ const ArticleP = () => {
     }
   }, [newArticle]);
 
-
   const handleArticleUpdate = (updatedArt) => {
     setArticles((prev) =>
-      prev.map((p) => (p._id === updatedArt._id ? updatedArt : p))
+      prev.map((p) => (p._id === updatedArt._id ? updatedArt : p)),
     );
   };
 

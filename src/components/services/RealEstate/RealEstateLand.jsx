@@ -37,7 +37,7 @@ const RealEstateLandingPage = () => {
       <section className={styles.cta}>
         <div className={styles.overlay}>
           <h2 className={styles.headline}>
-            Let's Turn Your Website into a Sales Machine
+            Let&apos;s Turn Your Website into a Sales Machine
           </h2>
           <p className={styles.subText}>
             Our real estate websites are built to convert — fast loading,

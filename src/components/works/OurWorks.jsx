@@ -5,6 +5,7 @@ import { api } from "@/data/api";
 import Link from "next/link";
 import { slugify } from "@/utility/slugify";
 import HomeCardSkeleton from "../skeleton/HomeCardSkeleton";
+import Image from "next/image";
 
 const OurWorks = () => {
   const [projects, setProjects] = useState([]);
@@ -75,7 +76,7 @@ const OurWorks = () => {
             const titleLink = slugify(title);
             return (
               <div className={styles.projTemp} key={_id}>
-                <img src={thumbnail?.photo} alt={`${title} image`} />
+                <Image src={thumbnail?.photo} alt={`${title} image`} width={300} height={200} />
                 <h4>{title}</h4>
                 <Link
                   href={`/work/${titleLink}/${_id}`}

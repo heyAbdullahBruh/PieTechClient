@@ -7,6 +7,7 @@ import { api } from "@/data/api";
 import { useDashAuth } from "../../DashCotext/DashContext";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
 import ToastP from "@/components/popupToast/ToastP";
+import Image from "next/image";
 
 const CreateProject = ({ setOpen, setData }) => {
   const [projData, setProjData] = useState({
@@ -170,7 +171,7 @@ const CreateProject = ({ setOpen, setData }) => {
                       >
                         ❌
                       </button>
-                      <img src={img?.url} alt={`uploaded-${idx}`} />
+                      <Image src={img?.url} alt={`uploaded-${idx}`} width={100} height={100} />
                     </div>
                   ))}
                 </div>

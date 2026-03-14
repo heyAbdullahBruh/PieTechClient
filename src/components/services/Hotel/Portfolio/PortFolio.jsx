@@ -124,13 +124,14 @@ const HotelPortfolio = () => {
       }
     );
 
-    caseStudiesRef.current.forEach((el) => {
+    const refs = caseStudiesRef.current;
+    refs.forEach((el) => {
       if (el) observer.observe(el);
     });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      caseStudiesRef.current.forEach((el) => {
+      refs.forEach((el) => {
         if (el) observer.unobserve(el);
       });
     };

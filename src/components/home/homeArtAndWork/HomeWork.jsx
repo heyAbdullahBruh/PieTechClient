@@ -4,6 +4,7 @@ import { slugify } from "@/utility/slugify";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./homeArtWrk.module.css";
+import Image from "next/image";
 
 const HomeWork = () => {
   const [projects, setProjects] = useState([]);
@@ -50,7 +51,7 @@ const HomeWork = () => {
                 className={styles.projTemp}
                 key={_id}
               >
-                <img src={thumbnail?.photo} alt={`${title} image`} />
+                <Image src={thumbnail?.photo} alt={`${title} image`} width={300} height={200} />
                 <h4>{title}</h4>
                 <Link href={`/work/${titleLink}/${_id}`} className={styles.projectLink}>
                   <button>View project</button>

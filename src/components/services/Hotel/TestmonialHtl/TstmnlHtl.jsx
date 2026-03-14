@@ -75,6 +75,7 @@ const HotelTestimonials = () => {
   ];
 
   useEffect(() => {
+    const element = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -84,13 +85,13 @@ const HotelTestimonials = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);
@@ -164,7 +165,7 @@ const HotelTestimonials = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className={styles.slide}>
                 <div className={styles.testimonialContent}>
-                  <p className={styles.review}>"{testimonial.review}"</p>
+                  <p className={styles.review}>&quot;{testimonial.review}&quot;</p>
                   <div className={styles.clientInfo}>
                     <h3 className={styles.clientName}>{testimonial.name}</h3>
                     <p className={styles.clientTitle}>{testimonial.jobTitle}</p>

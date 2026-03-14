@@ -7,6 +7,7 @@ import { api } from "@/data/api";
 import { useDashAuth } from "../../DashCotext/DashContext";
 import SmallLoad from "@/components/smallLaoding/smallLoad";
 import ToastP from "@/components/popupToast/ToastP";
+import Image from "next/image";
 
 const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
   const [projData, setProjData] = useState({
@@ -214,7 +215,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
                         >
                           ❌
                         </button>
-                        <img src={img.url} alt={`uploaded-${idx}`} />
+                        <Image src={img.url} alt={`uploaded-${idx}`} width={100} height={100} />
                       </div>
                     ))}
                   </div>
@@ -232,7 +233,7 @@ const UpdateP = ({ setOpen, data, setData, onUpdate }) => {
                         >
                           {imgCutLoad === img?.photoId ? <SmallLoad /> : "❌"}
                         </button>
-                        <img src={img?.img} alt={`prevImg-${idx}`} />
+                        <Image src={img?.img} alt={`prevImg-${idx}`} width={100} height={100} />
                       </div>
                     ))}
                   </div>

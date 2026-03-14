@@ -100,7 +100,7 @@ const Contact = () => {
         <div className={styles.cntcHeadSect}>
           <h1>Start Your Digital Journey</h1>
           <p>
-            Tell us about your goals. We'll craft a solution that brings your
+            Tell us about your goals. We&apos;ll craft a solution that brings your
             ideas to life, the smart way.
           </p>
         </div>
