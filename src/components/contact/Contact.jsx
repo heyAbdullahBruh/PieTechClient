@@ -14,31 +14,20 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { api } from "@/data/api";
 import ToastP from "../popupToast/ToastP";
 import SmallLoad from "../smallLaoding/smallLoad";
+import { useForm, useToast, useLoading } from "@/customHooks";
 
 const Contact = () => {
-  const [msgData, setMsgData] = useState({
+  const { formData, handleChange, resetForm } = useForm({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [popInfo, setPopInfo] = useState({
-    trigger: null,
-    type: null,
-    message: null,
-  });
+  const { name, email, subject, message } = formData;
+  const { popInfo, showToast, resetToast } = useToast();
+  const { loading, startLoading, stopLoading } = useLoading();
 
   const [captchaValue, setCaptchaValue] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const handleCollectChangesData = (e) => {
-    setMsgData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const { email, subject, name, message } = msgData;
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -48,7 +37,7 @@ const Contact = () => {
       return;
     }
 
-    setLoading(true);
+    startLoading();
     try {
       const res = await fetch(`${api}/sendmail`, {
         method: "POST",
@@ -64,11 +53,7 @@ const Contact = () => {
         }),
       });
       const data = await res.json();
-      setPopInfo({
-        trigger: Date.now(),
-        type: data?.success,
-        message: data?.message,
-      });
+      showToast(data?.message, data?.success);
 
       if (data?.success) {
         setTimeout(() => {
@@ -78,7 +63,7 @@ const Contact = () => {
     } catch (err) {
       console.error("Send failed", err);
     } finally {
-      setLoading(false);
+      stopLoading();
     }
   };
 
@@ -146,7 +131,7 @@ const Contact = () => {
                   type="text"
                   name="name"
                   placeholder="Your Name"
-                  onChange={handleCollectChangesData}
+                  onChange={handleChange}
                   value={name}
                   required
                 />
@@ -160,7 +145,7 @@ const Contact = () => {
                   type="email"
                   name="email"
                   placeholder="Your Email"
-                  onChange={handleCollectChangesData}
+                  onChange={handleChange}
                   value={email}
                   required
                 />
@@ -175,7 +160,7 @@ const Contact = () => {
                 type="text"
                 name="subject"
                 placeholder="How can we help?"
-                onChange={handleCollectChangesData}
+                onChange={handleChange}
                 value={subject}
                 required
               />
@@ -189,7 +174,7 @@ const Contact = () => {
                 name="message"
                 id={styles.message}
                 placeholder="Tell us about your project..."
-                onChange={handleCollectChangesData}
+                onChange={handleChange}
                 value={message}
                 required
               ></textarea>
