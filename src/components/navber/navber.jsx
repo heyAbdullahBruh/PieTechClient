@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./navber.module.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 const Navber = () => {
   const pathname = usePathname();
@@ -127,6 +128,9 @@ const Navber = () => {
                     <button>Contact</button>
                   </Link>
                 </li>
+                <li>
+                  <ThemeToggle />
+                </li>
               </ul>
             </div>
           )}
@@ -183,6 +187,9 @@ const Navber = () => {
                       Contact
                     </button>
                   </Link>
+                </li>
+                <li>
+                  <ThemeToggle />
                 </li>
               </ul>
             </div>

@@ -15,6 +15,8 @@ import { api } from "@/data/api";
 import ToastP from "../popupToast/ToastP";
 import SmallLoad from "../smallLaoding/smallLoad";
 import { useForm, useToast, useLoading } from "@/customHooks";
+import { useThemeStore } from "@/store";
+
 
 const Contact = () => {
   const { formData, handleChange, resetForm } = useForm({
@@ -27,9 +29,11 @@ const Contact = () => {
   const { popInfo, showToast, resetToast } = useToast();
   const { loading, startLoading, stopLoading } = useLoading();
 
+  const { theme } = useThemeStore();
   const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleSendMessage = async (e) => {
+
     e.preventDefault();
 
     if (!captchaValue) {
@@ -184,8 +188,9 @@ const Contact = () => {
               <ReCAPTCHA
                 sitekey={"6LfHa1QrAAAAAKFl-0u7ogSQ9DgbI0OPITwXJivc"}
                 onChange={(token) => setCaptchaValue(token)}
-                theme="dark"
+                theme={theme}
               />
+
             </div>
 
             <button

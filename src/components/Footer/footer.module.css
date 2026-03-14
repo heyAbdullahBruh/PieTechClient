@@ -2,18 +2,14 @@
 .footer {
     --primary-color: #05cebd;
     --secondary-color: #1588ec;
-    --text-color: #f0f0f0;
-    --bg-color: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.8);
-    --border-color: rgba(148, 163, 184, 0.2);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    background: var(--bg-color);
-    color: var(--text-color);
+    background: var(--color-bg);
+    color: var(--color-text);
     padding: 3rem 1rem 1rem;
     position: relative;
     overflow: hidden;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--color-border);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .footer::before {
@@ -76,7 +72,7 @@
     justify-content: center;
     font-size: 1.2rem;
     box-shadow: 0 4px 12px rgba(5, 206, 189, 0.4);
-    transition: var(--transition);
+    transition: all 0.3s ease;
     z-index: 10;
 }
 
@@ -92,10 +88,10 @@
 .footerDown {
     padding: 1.5rem;
     border-radius: 12px;
-    background: var(--card-bg);
+    background: var(--color-surface);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
 }
 
 .footerUP:hover,
@@ -124,12 +120,12 @@
 }
 
 .footerUP li a {
-    color: var(--text-color);
+    color: var(--color-text-secondary);
     text-decoration: none;
     padding: 0.5rem;
     display: block;
     border-radius: 6px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -176,7 +172,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .brandSection:hover .logo {
@@ -184,7 +180,7 @@
 }
 
 .tagline {
-    color: #94a3b8;
+    color: var(--color-muted);
     font-style: italic;
 }
 
@@ -216,7 +212,7 @@
 .emailLink {
     color: var(--primary-color);
     text-decoration: none;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .emailLink:hover {
@@ -242,7 +238,7 @@
     justify-content: center;
     color: var(--text-color);
     font-size: 1.3rem;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -257,8 +253,8 @@
 .copyright {
     text-align: center;
     padding: 1.5rem;
-    border-top: 1px solid var(--border-color);
-    color: #64748b;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
     font-size: 0.9rem;
 }
 
