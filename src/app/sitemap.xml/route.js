@@ -38,13 +38,7 @@ export async function GET() {
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pietenium.vercel.app/about-us</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://pietenium.vercel.app/about-team</loc>
+    <loc>https://pietenium.vercel.app/about</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
