@@ -4,7 +4,7 @@ const HomeCardSkeleton = () => {
   return (
     <div
       style={{
-        width: "var(--card-width)",
+        width: "100%",
         minHeight: "var(--card-min-height)",
         background: "var(--color-surface)",
         border: "1px solid var(--color-surface-elevated)",

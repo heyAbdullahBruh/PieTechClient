@@ -57,7 +57,7 @@ const OurWorks = () => {
   const total = totalPages(filteredProjects.length);
 
   return (
-    <aside className={styles.ourWorks}>
+    <section className={`${styles.ourWorks} animate-fade`}>
       <section className={styles.owHead}>
         {/* Background Video */}
         <video
@@ -116,20 +116,24 @@ const OurWorks = () => {
                 const { _id, title, thumbnail } = data;
                 const titleLink = slugify(title);
                 return (
-                  <div className={styles.projTemp} key={_id}>
-                    <Image
-                      src={thumbnail?.photo}
-                      alt={`${title} image`}
-                      width={300}
-                      height={200}
-                    />
-                    <h4>{title}</h4>
-                    <Link
-                      href={`/work/${titleLink}/${_id}`}
-                      className={styles.projectLink}
-                    >
-                      <button>View project</button>
-                    </Link>
+                  <div className={`${styles.projTemp} animate-slide-up`} key={_id}>
+                    <div className={styles.imgWrapper}>
+                      <Image
+                        src={thumbnail?.photo}
+                        alt={`${title} image`}
+                        width={400}
+                        height={250}
+                      />
+                    </div>
+                    <div className={styles.projInfo}>
+                      <h4>{title}</h4>
+                      <Link
+                        href={`/work/${titleLink}/${_id}`}
+                        className={styles.projectLink}
+                      >
+                        View Details
+                      </Link>
+                    </div>
                   </div>
                 );
               })}
@@ -154,7 +158,7 @@ const OurWorks = () => {
           )}
         </>
       )}
-    </aside>
+    </section>
   );
 };
 

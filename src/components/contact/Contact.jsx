@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import styles from "./contact.module.css";
-import mailBox from "@/gallary/siteImgs/mailBox.svg";
+import mailBox from "@/gallery/siteImgs/mailBox.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationPin,
@@ -91,7 +91,7 @@ const Contact = () => {
     "https://res.cloudinary.com/dpjrmamby/video/upload/v1746989800/PieTechBanner_ptcgew.mp4";
 
   return (
-    <aside className={styles.contact}>
+    <section className={`${styles.contact} animate-fade`}>
       <section className={styles.contactHead}>
         <video
           className={styles.backgroundVideo}
@@ -228,7 +228,7 @@ const Contact = () => {
           <ToastP popInfo={popInfo} />
         </div>
       </section>
-    </aside>
+    </section>
   );
 };
 

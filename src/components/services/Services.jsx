@@ -123,7 +123,7 @@ const Services = () => {
     "https://res.cloudinary.com/dpjrmamby/video/upload/v1746989800/PieTechBanner_ptcgew.mp4";
 
   return (
-    <aside className={styles.service}>
+    <section className={`${styles.service} animate-fade`}>
       <section className={styles.srvHead}>
         <video
           className={styles.backgroundVideo}
@@ -221,7 +221,7 @@ const Services = () => {
           </Link>
         </div>
       </section>
-    </aside>
+    </section>
   );
 };
 

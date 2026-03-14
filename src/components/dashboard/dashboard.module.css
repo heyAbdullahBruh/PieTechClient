@@ -1,48 +1,189 @@
-/* .dashboard {
-    margin-top: 7rem;
-} */
-
-/* Dashboard Navber Design start */
-.dashboardNav {
+.dashboard {
+    padding: 8rem var(--section-padding-x, 2rem) 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.welcomeSection h1 {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.welcomeSection p {
+    color: var(--color-muted);
+    font-size: 1.125rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.statCard {
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    padding: 1.5rem;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.4s var(--ease-out-smooth);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: var(--premium-shadow);
+}
+
+.statIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(14, 165, 233, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    background-color: #02413d;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    top: 3.5rem;
-    border-radius: 3rem;
+    color: var(--color-accent);
+    font-size: 1.25rem;
 }
 
-.dashNavSec ul {
+.statInfo {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.statLabel {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    font-weight: var(--font-weight-medium);
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+.quickActions h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+}
+
+.actionButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.actionBtn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actionBtn:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+}
+
+/* Dashboard Navigation Modernization */
+.dashboardNav {
+    position: fixed;
+    top: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: var(--atm-card-border);
+    border-radius: 100px;
+    padding: 0.6rem 1.25rem;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.dashNavSec {
+    display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.navBrand {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+    padding: 0 1rem;
+    border-right: 1px solid var(--color-border);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.navList {
+    display: flex;
     list-style: none;
-    padding: 0.5rem;
-}
-
-.dashNavSec ul li {
-    margin: 0;
-}
-
-.dashNavSec ul li a {
-    margin: 0;
-}
-
-.dashNavSec ul li button {
-    opacity: 1;
-    background: none;
-    border: none;
-    border-right: 2px solid aqua;
+    gap: 0.5rem;
     padding: 0;
     margin: 0;
-    &:hover {
-        color: #03ff81e1;
-    }
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 100px;
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    transition: all 0.3s var(--ease-out-smooth);
+}
+
+.navLink:hover {
+    color: var(--color-text);
+    background: var(--color-surface-elevated);
+}
+
+.navLink:global(.active) {
+    background: var(--color-accent);
+    color: white;
+}
+
+.logoutBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+    background: #ef4444;
+    color: white;
 }
 
 /* Dashboard AUth design ---> */

@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 0;
-    background-color: var(--color-bg);
+    background: var(--color-bg);
     min-height: 100vh;
 }
 
@@ -108,20 +108,18 @@
 }
 
 .cardItem {
-    background: var(--color-surface);
-    border: 1px solid var(--color-surface-elevated);
-    padding: 2.5rem 2rem;
-    border-radius: var(--card-border-radius);
-    box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition:
-        transform 0.4s var(--ease-out-smooth),
-        box-shadow 0.4s var(--ease-out-smooth);
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    padding: 3rem 2.5rem;
+    border-radius: 32px;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s var(--ease-out-smooth);
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
 }
 
 .cardItem:hover {
@@ -197,15 +195,18 @@
 }
 
 .stepCard {
-    background: var(--color-surface-elevated);
-    padding: 2.5rem;
-    border-radius: var(--card-border-radius);
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    padding: 3rem 2.5rem;
+    border-radius: 32px;
     transition: all 0.4s var(--ease-out-smooth);
     text-align: left;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
 }
 
 .tesimonial {

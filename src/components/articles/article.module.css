@@ -1,7 +1,7 @@
 .articles {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-bg);
+    background: var(--color-bg);
     min-height: 100vh;
 }
 
@@ -10,7 +10,7 @@
     height: 45vh;
     position: relative;
     overflow: hidden;
-    background-image: url("../../gallary/siteImgs/articlePageHero.webp");
+    background-image: url("../../gallery/siteImgs/articlePageHero.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -29,27 +29,39 @@
     align-items: center;
     text-align: center;
     padding: 0 var(--section-padding-x, 2rem);
+    gap: 1rem;
+}
+
+.heroLabel {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8125rem;
 }
 
 .heroCont h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: var(--font-weight-semibold);
     color: var(--banner-text);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+    margin: 0;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
 }
 
 .heroCont p {
     font-size: 1.25rem;
     color: var(--banner-text-secondary);
-    max-width: 600px;
+    max-width: 50ch;
     line-height: var(--line-height-relaxed);
 }
 
 .artlShowSec {
     width: 100%;
-    background-color: var(--color-bg);
-    padding: 4rem 0;
+    background: var(--atm-bg);
+    padding: 8rem 0;
+    position: relative;
+    isolation: isolate;
 }
 
 .filterBar {
@@ -145,30 +157,31 @@
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: 3rem;
 }
 
 .artLink {
-    height: 100%;
+    text-decoration: none;
 }
 
 .artCard {
-    background: var(--color-surface);
-    border: 1px solid var(--color-surface-elevated);
-    border-radius: 16px;
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    border-radius: 32px;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: var(--transition-card);
+    transition: all 0.4s var(--ease-out-smooth);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
 }
 
 .artCard:hover {
     transform: translateY(-8px);
-    box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.2),
-        0 10px 10px -5px rgba(0, 0, 0, 0.1);
     border-color: var(--color-accent);
+    box-shadow: var(--premium-shadow);
 }
 
 .cardImage {
@@ -396,8 +409,9 @@
 
 .artContent {
     font-size: 1.125rem;
-    line-height: var(--line-height-relaxed);
+    line-height: 1.8;
     color: var(--color-text-secondary);
+    max-width: 100%;
 }
 
 .artContent p {
@@ -460,19 +474,18 @@
 }
 
 .ctaBox {
-    background: linear-gradient(
-        135deg,
-        var(--color-surface) 0%,
-        var(--color-bg) 100%
-    );
-    border: 1px solid var(--color-surface-elevated);
-    border-radius: var(--card-border-radius);
-    padding: 4rem 2rem;
+    background: var(--glass-background);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: 24px;
+    padding: 4rem;
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-top: 4rem;
+    margin-top: 5rem;
     transition: all 0.3s ease;
+    box-shadow: var(--glass-shadow);
 }
 
 .ctaBox:hover {

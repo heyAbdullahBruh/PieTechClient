@@ -196,9 +196,20 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    border: 2px solid #00ffff;
-    padding: 1rem;
+    gap: 1.5rem;
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s var(--ease-out-smooth);
+}
+
+.showArt:hover {
+    border-color: var(--color-accent);
+    transform: translateX(5px);
 }
 .showArt div {
     display: flex;

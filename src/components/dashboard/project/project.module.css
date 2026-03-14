@@ -212,12 +212,38 @@
 }
 
 .read table {
-    border: 1px solid #02ff02;
-    border-collapse: collapse;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+    margin-top: 1rem;
 }
 
-.read table th,
+.read table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    color: var(--color-muted);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
 .read table td {
-    border: 1px solid #02ff02;
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border-top: 1px solid var(--atm-card-border);
+    border-bottom: 1px solid var(--atm-card-border);
+    color: var(--color-text);
+}
+
+.read table td:first-child {
+    border-left: 1px solid var(--atm-card-border);
+    border-radius: 16px 0 0 16px;
+}
+
+.read table td:last-child {
+    border-right: 1px solid var(--atm-card-border);
+    border-radius: 0 16px 16px 0;
 }

@@ -194,7 +194,7 @@
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .card {
         padding: 2.5rem;
     }
@@ -210,7 +210,7 @@
     .card {
         padding: 2rem 1.5rem;
     }
-    
+
     .logo {
         font-size: 1.75rem;
     }
@@ -220,7 +220,7 @@
     .footer {
         padding: 4rem 0 2rem;
     }
-    
+
     .footerGrid {
         grid-template-columns: 1fr;
         gap: 2.5rem;

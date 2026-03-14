@@ -184,10 +184,20 @@
 .memberData {
     width: 20rem;
     text-align: center;
-    box-shadow: 1px 1px 2px 1px #d8d8d8af;
-    padding: 1rem;
-    border-radius: 1rem;
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    padding: 2rem;
+    border-radius: 24px;
     position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s var(--ease-out-smooth);
+}
+
+.memberData:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
 }
 
 .memberData img {

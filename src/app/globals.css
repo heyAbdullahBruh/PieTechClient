@@ -13,9 +13,16 @@
     --color-text-secondary: #334155;
     --color-muted: #64748b;
     --color-border: #e2e8f0;
+    --glass-background: rgba(255, 255, 255, 0.95);
+    --glass-border: 1px solid rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     --banner-overlay: linear-gradient(135deg, rgba(219, 234, 254, 0.8), rgba(248, 250, 252, 0.85));
     --banner-text: #0f172a;
     --banner-text-secondary: #334155;
+    --color-footer-bg: #ffffff;
+    --color-footer-text: #030c13;
+    --color-footer-text-muted: #475569;
+    --color-footer-border: rgba(0, 0, 0, 0.08);
 
 
     /* Typography */
@@ -31,12 +38,21 @@
     --card-width: 20rem;
     --card-image-height: 11rem;
     --card-min-height: 18rem;
-    --card-border-radius: 8px;
+    --card-border-radius: 12px;
     --section-padding-x: 2rem;
     --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
     --transition-card:
         transform 0.4s var(--ease-out-smooth),
         box-shadow 0.4s var(--ease-out-smooth);
+
+    --premium-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+
+    /* Atmospheric Tokens */
+    --atm-bg: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 100%);
+    --atm-bg-alt: radial-gradient(circle at bottom, var(--color-surface) 0%, var(--color-bg) 100%);
+    --atm-card-bg: rgba(255, 255, 255, 0.02);
+    --atm-card-blur: 20px;
+    --atm-card-border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="dark"] {
@@ -55,6 +71,13 @@
     --banner-overlay: linear-gradient(135deg, rgba(1, 43, 66, 0.85), rgba(2, 6, 23, 0.9));
     --banner-text: #f8fafc;
     --banner-text-secondary: #e2e8f0;
+
+    --glass-background: rgba(15, 23, 42, 0.8);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+    --color-footer-bg: #030c13;
+    --color-footer-text: #f8fafc;
+    --color-footer-text-muted: #94a3b8;
+    --color-footer-border: rgba(255, 255, 255, 0.08);
 }
 
 
@@ -102,10 +125,6 @@ nav {
     /* color: #032b4d93; */
 }
 
-
-footer {
-    background-color: #030303b0;
-}
 
 main {
     padding-top: 5.5rem;
@@ -399,4 +418,63 @@ button {
     .editorContent p {
         font-size: 0.8rem;
     }
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: var(--glass-background);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s var(--ease-out-smooth) forwards;
+}
+
+/* Atmospheric Global Utilities */
+.atm-bg {
+    background: var(--atm-bg);
+}
+
+.atm-bg-alt {
+    background: var(--atm-bg-alt);
+}
+
+.atm-card {
+    background: var(--atm-card-bg);
+    backdrop-filter: blur(var(--atm-card-blur));
+    -webkit-backdrop-filter: blur(var(--atm-card-blur));
+    border: var(--atm-card-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    transition: all 0.4s var(--ease-out-smooth);
+}
+
+.atm-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--color-accent);
 }

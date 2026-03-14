@@ -11,7 +11,7 @@ const ArticleDetails = ({ data }) => {
     : {};
 
   return (
-    <section className={styles.articleD}>
+    <section className={`${styles.articleD} animate-fade`}>
       <header className={styles.articleHeader}>
         <Image
           src={thumbnail?.photo}

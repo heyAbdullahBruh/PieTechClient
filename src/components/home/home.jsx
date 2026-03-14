@@ -8,14 +8,18 @@ import HomeAbout from "./homeAbout/homeBAbout";
 import HomeArticle from "./homeArtAndWork/HomeArticle";
 import HomeWork from "./homeArtAndWork/HomeWork";
 import FAQ from "./faq/FAQ";
+import DevelopmentProcess from "./process/DevelopmentProcess";
+import EngagementModels from "./engagement/EngagementModels";
 
 const Home = () => {
   return (
-    <aside className={styles.home}>
+    <section className={`${styles.home} animate-fade`}>
       <Hero />
       <TrustedComp />
       <HomeAbout />
       <HomeWork />
+      <DevelopmentProcess />
+      <EngagementModels />
       <HomeArticle />
       <TestimonialSlider />
       <FAQ />
@@ -30,7 +34,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-    </aside>
+    </section>
   );
 };
 export default Home;

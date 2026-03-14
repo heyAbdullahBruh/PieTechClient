@@ -6,6 +6,14 @@ import { useDashAuth } from "./DashCotext/DashContext";
 import SmallLoad from "../smallLaoding/smallLoad";
 import ToastP from "../popupToast/ToastP";
 import { useToast, useLoading } from "@/customHooks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTableColumns,
+  faBriefcase,
+  faFilePen,
+  faPeopleGroup,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 const DashboardNav = () => {
   const { accessToken, setAccessToken } = useDashAuth();
@@ -39,38 +47,46 @@ const DashboardNav = () => {
     }
   };
   return (
-    <aside className={styles.dashboardNav}>
+    <nav className={styles.dashboardNav}>
       <section className={styles.dashNavSec}>
-        <ul>
+        <div className={styles.navBrand}>PieTech HQ</div>
+        <ul className={styles.navList}>
           <li>
-            <Link href={"/dashboard"}>
-              <button>Dashboard</button>
+            <Link href="/dashboard" className={styles.navLink}>
+              <FontAwesomeIcon icon={faTableColumns} />
+              <span>Overview</span>
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/project"}>
-              <button>Projects</button>
+            <Link href="/dashboard/project" className={styles.navLink}>
+              <FontAwesomeIcon icon={faBriefcase} />
+              <span>Projects</span>
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/article"}>
-              <button>Articles</button>
+            <Link href="/dashboard/article" className={styles.navLink}>
+              <FontAwesomeIcon icon={faFilePen} />
+              <span>Articles</span>
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/team"}>
-              <button>Teams</button>
+            <Link href="/dashboard/team" className={styles.navLink}>
+              <FontAwesomeIcon icon={faPeopleGroup} />
+              <span>Teams</span>
             </Link>
-          </li>
-          <li>
-            <button onClick={handleLogOut} disabled={loading}>
-              {loading ? <SmallLoad /> : "End"}
-            </button>
           </li>
         </ul>
+        <button 
+          onClick={handleLogOut} 
+          disabled={loading} 
+          className={styles.logoutBtn}
+          title="Logout"
+        >
+          {loading ? <SmallLoad /> : <FontAwesomeIcon icon={faArrowRightFromBracket} />}
+        </button>
       </section>
       <ToastP popInfo={popInfo} />
-    </aside>
+    </nav>
   );
 };
 

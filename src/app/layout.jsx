@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navber from "@/components/navber/navber";
-import Footer from "@/components/Footer/foooter";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 import CookiePopup from "@/components/AcceptCookie/CookiePopup";
 import ScrollToTop from "@/components/ScrollToTop";
 import ThemeProvider from "@/components/theme/ThemeProvider";
@@ -122,7 +122,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <ScrollToTop />
           <nav>
-            <Navber />
+            <Navbar />
           </nav>
           <main>{children}</main>
           <CookiePopup />
