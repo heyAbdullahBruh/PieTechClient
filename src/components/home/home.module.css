@@ -65,7 +65,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0 var(--section-padding-x, 2rem);
+    padding: 5rem var(--section-padding-x, 2rem) 0;
 }
 
 .heroContent h1,

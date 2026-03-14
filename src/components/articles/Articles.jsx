@@ -11,10 +11,13 @@ import Skeleton from "../skeleton/Skeleton";
 import { useLoading } from "@/customHooks";
 import Pagination from "../pagination/Pagination";
 import usePagination from "@/customHooks/usePagination";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Articles = () => {
   const [articleType, setArticleType] = useState("");
   const [articles, setArticles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const { loading, startLoading, stopLoading } = useLoading();
   const { currentPage, paginate, totalPages } = usePagination({ initialLimit: 6 });
 
@@ -45,13 +48,24 @@ const Articles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articleType]);
 
+  const filteredArticles = useMemo(() => {
+    if (!searchQuery.trim()) return articles;
+    const query = searchQuery.toLowerCase();
+    return articles.filter(
+      (art) =>
+        art.title?.toLowerCase().includes(query) ||
+        art.hashtags?.some((h) => h.toLowerCase().includes(query)) ||
+        art.articleType?.toLowerCase().includes(query)
+    );
+  }, [articles, searchQuery]);
+
   const paginatedArticles = useMemo(() => {
     const start = (currentPage - 1) * 6;
     const end = start + 6;
-    return articles.slice(start, end);
-  }, [articles, currentPage]);
+    return filteredArticles.slice(start, end);
+  }, [filteredArticles, currentPage]);
 
-  const total = totalPages(articles.length);
+  const total = totalPages(filteredArticles.length);
 
   return (
     <aside className={styles.articles}>
@@ -89,6 +103,19 @@ const Articles = () => {
       ) : (
         <section className={styles.artlShowSec}>
           <div className={styles.filterBar}>
+            <div className={styles.searchWrapper}>
+              <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  paginate(1);
+                }}
+                className={styles.searchInput}
+              />
+            </div>
             <div className={styles.artclAct}>
               <button
                 className={`${articleType === "" && styles.active}`}
@@ -153,7 +180,11 @@ const Articles = () => {
               </div>
             ) : (
               <div className={styles.emptyState}>
-                <p>No articles or news found matching your selection.</p>
+                <p>
+                  {searchQuery
+                    ? `No articles found for "${searchQuery}"`
+                    : "No articles or news found matching your selection."}
+                </p>
               </div>
             )}
           </div>
