@@ -1,20 +1,33 @@
 "use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { api } from "@/data/api";
 import { slugify } from "@/utility/slugify";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./workD.module.css";
 
 const WorkDetails = ({ project }) => {
-const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? project : {};
+  const {
+    _id: currentId,
+    title,
+    details,
+    gallary,
+    pLink,
+    thumbnail,
+  } = project ? project : {};
   const [currentImg, setCurrentImg] = useState(0);
   const [otherProjects, setOtherProjects] = useState([]);
 
-  const getValidImage = (img) => img && typeof img === 'string' && img.trim() !== "" ? img : null;
-  
-  const galleryImages = gallary?.filter(item => getValidImage(item?.img)) || [];
-  const headerImageSrc = getValidImage(galleryImages[currentImg]?.img) || getValidImage(galleryImages[0]?.img) || getValidImage(thumbnail?.photo) || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%23333' width='1920' height='1080'/%3E%3Ctext fill='%23666' font-size='48' x='50%25' y='50%25' text-anchor='middle'%3ENo Image%3C/text%3E%3C/svg%3E";
+  const getValidImage = (img) =>
+    img && typeof img === "string" && img.trim() !== "" ? img : null;
+
+  const galleryImages =
+    gallary?.filter((item) => getValidImage(item?.img)) || [];
+  const headerImageSrc =
+    getValidImage(galleryImages[currentImg]?.img) ||
+    getValidImage(galleryImages[0]?.img) ||
+    getValidImage(thumbnail?.photo) ||
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%23333' width='1920' height='1080'/%3E%3Ctext fill='%23666' font-size='48' x='50%25' y='50%25' text-anchor='middle'%3ENo Image%3C/text%3E%3C/svg%3E";
   const currentImage = galleryImages[currentImg];
   const hasValidGallery = galleryImages.length > 0;
 
@@ -25,7 +38,9 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
         const data = await res.json();
         if (data?.data) {
           // Filter out current project and pick 3 random/recent ones
-          const filtered = data.data.filter(p => p._id !== currentId).slice(0, 3);
+          const filtered = data.data
+            .filter((p) => p._id !== currentId)
+            .slice(0, 3);
           setOtherProjects(filtered);
         }
       } catch (err) {
@@ -56,7 +71,8 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
             <span className={styles.projectCategory}>Case Study</span>
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.subtitle}>
-              Exploring the vision, strategy, and execution behind this successful digital launch.
+              Exploring the vision, strategy, and execution behind this
+              successful digital launch.
             </p>
           </div>
         </div>
@@ -72,7 +88,7 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
                   <p key={idx}>{line}</p>
                 ))}
               </div>
-              
+
               {pLink && (
                 <a
                   href={pLink}
@@ -102,8 +118,8 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
             <section className={styles.gallerySection}>
               <h2 className={styles.sectionTitle}>Visual Showcase</h2>
               {hasValidGallery ? (
-              <div className={styles.sliderWrapper}>
-                <div className={styles.mainImageContainer}>
+                <div className={styles.sliderWrapper}>
+                  <div className={styles.mainImageContainer}>
                     <Image
                       src={getValidImage(currentImage?.img) || headerImageSrc}
                       alt={`${title} - Image ${currentImg + 1}`}
@@ -111,57 +127,71 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
                       className={styles.mainImage}
                       priority
                     />
-                </div>
+                  </div>
 
-                <div className={styles.sliderControls}>
-                  <button
-                    className={styles.sliderBtn}
-                    onClick={() =>
-                      setCurrentImg((prev) =>
-                        prev === 0 ? (galleryImages.length || 1) - 1 : prev - 1
-                      )
-                    }
-                    aria-label="Previous image"
-                  >
-                    ←
-                  </button>
-                  <span className={styles.sliderCounter}>
-                    {currentImg + 1} / {galleryImages.length}
-                  </span>
-                  <button
-                    className={styles.sliderBtn}
-                    onClick={() =>
-                      setCurrentImg((prev) =>
-                        prev === (galleryImages.length || 1) - 1 ? 0 : prev + 1
-                      )
-                    }
-                    aria-label="Next image"
-                  >
-                    →
-                  </button>
-                </div>
-
-                <div className={styles.thumbnailGrid}>
-                  {galleryImages.map((item, idx) => (
-                    <div
-                      className={`${styles.thumbnail} ${
-                        idx === currentImg ? styles.active : ""
-                      }`}
-                      onClick={() => setCurrentImg(idx)}
-                      key={item?.photoId || idx}
+                  <div className={styles.sliderControls}>
+                    <button
+                      className={styles.sliderBtn}
+                      onClick={() =>
+                        setCurrentImg((prev) =>
+                          prev === 0
+                            ? (galleryImages.length || 1) - 1
+                            : prev - 1,
+                        )
+                      }
+                      aria-label="Previous image"
                     >
-                      <Image
-                        src={item.img}
-                        alt={`Thumbnail ${idx + 1}`}
-                        width={80}
-                        height={60}
-                      />
-                    </div>
-                  ))}
+                      ←
+                    </button>
+                    <span className={styles.sliderCounter}>
+                      {currentImg + 1} / {galleryImages.length}
+                    </span>
+                    <button
+                      className={styles.sliderBtn}
+                      onClick={() =>
+                        setCurrentImg((prev) =>
+                          prev === (galleryImages.length || 1) - 1
+                            ? 0
+                            : prev + 1,
+                        )
+                      }
+                      aria-label="Next image"
+                    >
+                      →
+                    </button>
+                  </div>
+
+                  <div className={styles.thumbnailGrid}>
+                    {galleryImages.map((item, idx) => (
+                      <div
+                        className={`${styles.thumbnail} ${
+                          idx === currentImg ? styles.active : ""
+                        }`}
+                        onClick={() => setCurrentImg(idx)}
+                        key={item?.photoId || idx}
+                      >
+                        <Image
+                          src={item.img}
+                          alt={`Thumbnail ${idx + 1}`}
+                          width={80}
+                          height={60}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
               ) : (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '200px', color: '#666' }}>No images available</div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "200px",
+                    color: "#666",
+                  }}
+                >
+                  No images available
+                </div>
               )}
             </section>
           </div>
@@ -169,28 +199,31 @@ const { _id: currentId, title, details, gallary, pLink, thumbnail } = project ? 
           <aside className={styles.sidebar}>
             <div className={styles.ctaCard}>
               <h3>Elevate Your Vision</h3>
-              <p>Ready to build something equally impactful? Let&apos;s talk strategy.</p>
+              <p>
+                Ready to build something equally impactful? Let&apos;s talk
+                strategy.
+              </p>
               <Link href="/contact-us" className={styles.ctaBtn}>
                 Get Started
               </Link>
             </div>
-            
+
             {otherProjects.length > 0 && (
               <div className={styles.relatedWorks}>
                 <h4>Related Projects</h4>
                 <div className={styles.relatedGrid}>
                   {otherProjects.map((p) => (
-                    <Link 
-                      key={p._id} 
+                    <Link
+                      key={p._id}
                       href={`/work/${slugify(p.title)}/${p._id}`}
                       className={styles.relatedItem}
                     >
                       <div className={styles.relatedImg}>
-                        <Image 
-                          src={p.thumbnail?.photo} 
-                          alt={p.title} 
-                          width={100} 
-                          height={70} 
+                        <Image
+                          src={p.thumbnail?.photo}
+                          alt={p.title}
+                          width={100}
+                          height={70}
                         />
                       </div>
                       <div className={styles.relatedInfo}>

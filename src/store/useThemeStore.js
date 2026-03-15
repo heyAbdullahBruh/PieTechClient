@@ -6,16 +6,17 @@ export const useThemeStore = create(
     persist(
       (set) => ({
         theme: "light",
-        
-        toggleTheme: () => set((state) => ({ 
-          theme: state.theme === "light" ? "dark" : "light" 
-        })),
-        
+
+        toggleTheme: () =>
+          set((state) => ({
+            theme: state.theme === "light" ? "dark" : "light",
+          })),
+
         setTheme: (theme) => set({ theme }),
       }),
-      { name: "theme-store" }
-    )
-  )
+      { name: "theme-store" },
+    ),
+  ),
 );
 
 export default useThemeStore;

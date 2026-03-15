@@ -1,487 +1,487 @@
 .container {
-    min-height: 100vh;
-    background: var(--color-bg);
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    color: var(--color-text);
+  min-height: 100vh;
+  background: var(--color-bg);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  color: var(--color-text);
 }
 
 .header {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-    isolation: isolate;
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .headerImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--banner-overlay);
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--banner-overlay);
+  z-index: 1;
 }
 
 .headerContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 2;
-    padding: 0 var(--section-padding-x, 2rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  padding: 0 var(--section-padding-x, 2rem);
 }
 
 .backLink {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: var(--font-weight-medium);
-    padding: 0.5rem 1rem;
-    border-radius: var(--card-border-radius);
-    background: var(--color-surface);
-    border: 1px solid var(--color-surface-elevated);
-    transition: all 0.3s ease;
-    z-index: 3;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 1rem;
+  border-radius: var(--card-border-radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-elevated);
+  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .backLink:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .title {
-    font-size: 3rem;
-    font-weight: var(--font-weight-semibold);
-    color: var(--banner-text);
-    line-height: var(--line-height-tight);
-    margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--banner-text);
+  line-height: var(--line-height-tight);
+  margin-bottom: 1rem;
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: var(--banner-text-secondary);
-    max-width: 60ch;
-    line-height: var(--line-height-relaxed);
+  font-size: 1.25rem;
+  color: var(--banner-text-secondary);
+  max-width: 60ch;
+  line-height: var(--line-height-relaxed);
 }
 
 .content {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 8rem var(--section-padding-x, 2rem);
-    background: var(--atm-bg);
-    position: relative;
-    isolation: isolate;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem var(--section-padding-x, 2rem);
+  background: var(--atm-bg);
+  position: relative;
+  isolation: isolate;
 }
 
 @media (min-width: 1280px) {
-    .content {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  .content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .sectionTitle {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1rem;
 }
 
 .sectionTitle::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 70%;
-    background: var(--color-accent);
-    border-radius: 2px;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 70%;
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 .detailsGrid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
 }
 
 .mainContent {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .heroText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .projectCategory {
-    color: var(--color-accent);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
 }
 
 .sliderWrapper {
-    position: relative;
-    margin-bottom: 3rem;
+  position: relative;
+  margin-bottom: 3rem;
 }
 
 .mainImageContainer {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: var(--card-border-radius);
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .mainImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: fadeIn 0.5s ease-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeIn 0.5s ease-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(1.02);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .sliderControls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .sliderBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--color-surface-elevated);
-    border-radius: 50%;
-    background: var(--color-surface);
-    color: var(--color-text);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-surface-elevated);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .sliderBtn:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
 }
 
 .sliderCounter {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    font-weight: var(--font-weight-medium);
-    min-width: 60px;
-    text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  min-width: 60px;
+  text-align: center;
 }
 
 .thumbnailGrid {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .thumbnail {
-    width: 80px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnail:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .thumbnail.active {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 2px rgba(4, 207, 241, 0.3);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(4, 207, 241, 0.3);
 }
 
 .description {
-    background: var(--atm-card-bg);
-    backdrop-filter: blur(var(--atm-card-blur));
-    -webkit-backdrop-filter: blur(var(--atm-card-blur));
-    border: var(--atm-card-border);
-    border-radius: 32px;
-    padding: 3rem;
-    margin-bottom: 2rem;
-    line-height: var(--line-height-relaxed);
-    color: var(--color-text-secondary);
-    white-space: pre-wrap;
-    font-size: 1.125rem;
-    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
+  background: var(--atm-card-bg);
+  backdrop-filter: blur(var(--atm-card-blur));
+  -webkit-backdrop-filter: blur(var(--atm-card-blur));
+  border: var(--atm-card-border);
+  border-radius: 32px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  font-size: 1.125rem;
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
 }
 
 .projectLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    background: var(--color-accent);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--card-border-radius);
-    font-weight: var(--font-weight-semibold);
-    transition: all 0.3s ease;
-    margin-bottom: 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--color-accent);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--card-border-radius);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s ease;
+  margin-bottom: 4rem;
 }
 
 .projectLink:hover {
-    background: #0284c7;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(4, 207, 241, 0.3);
+  background: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(4, 207, 241, 0.3);
 }
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .ctaCard {
-    background: var(--color-accent);
-    padding: 2.5rem;
-    border-radius: 24px;
-    color: white;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    box-shadow: 0 12px 24px rgba(14, 165, 233, 0.2);
+  background: var(--color-accent);
+  padding: 2.5rem;
+  border-radius: 24px;
+  color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.2);
 }
 
 .ctaCard h3 {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    margin: 0;
-    color: white;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: white;
 }
 
 .ctaCard p {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    opacity: 0.9;
-    margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 1rem;
 }
 
 .ctaBtn {
-    background: white;
-    color: var(--color-accent);
-    padding: 0.875rem;
-    border-radius: 12px;
-    font-weight: var(--font-weight-bold);
-    text-align: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
+  background: white;
+  color: var(--color-accent);
+  padding: 0.875rem;
+  border-radius: 12px;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .ctaBtn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .relatedWorks h4 {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1.5rem;
 }
 
 .relatedGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .relatedItem {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    padding: 0.75rem;
-    border-radius: 16px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.75rem;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .relatedItem:hover {
-    border-color: var(--color-accent);
-    transform: translateX(5px);
-    box-shadow: var(--premium-shadow);
+  border-color: var(--color-accent);
+  transform: translateX(5px);
+  box-shadow: var(--premium-shadow);
 }
 
 .relatedImg {
-    width: 80px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    flex-shrink: 0;
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .relatedImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .relatedInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .relatedInfo h5 {
-    font-size: 0.9375rem;
-    color: var(--color-text);
-    margin: 0;
-    font-weight: var(--font-weight-semibold);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
 }
 
 .relatedInfo span {
-    font-size: 0.75rem;
-    color: var(--color-accent);
-    font-weight: var(--font-weight-medium);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
 }
 
 @media (max-width: 1024px) {
-    .detailsGrid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-    
-    .sidebar {
-        order: 2;
-    }
-    
-    .mainContent {
-        order: 1;
-    }
+  .detailsGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .mainContent {
+    order: 1;
+  }
 }
 
 @media (max-width: 768px) {
-    .header {
-        height: 40vh;
-    }
+  .header {
+    height: 40vh;
+  }
 
-    .title {
-        font-size: 2rem;
-    }
+  .title {
+    font-size: 2rem;
+  }
 
-    .subtitle {
-        font-size: 1rem;
-    }
+  .subtitle {
+    font-size: 1rem;
+  }
 
-    .backLink {
-        top: 1rem;
-        left: 1rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-    }
+  .backLink {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
 
-    .content {
-        padding: 2rem 1rem;
-    }
+  .content {
+    padding: 2rem 1rem;
+  }
 
-    .sectionTitle {
-        font-size: 1.25rem;
-    }
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
 
-    .thumbnail {
-        width: 60px;
-        height: 45px;
-    }
+  .thumbnail {
+    width: 60px;
+    height: 45px;
+  }
 
-    .ctaBox {
-        padding: 3rem 1.5rem;
-    }
+  .ctaBox {
+    padding: 3rem 1.5rem;
+  }
 
-    .ctaBox h2 {
-        font-size: 1.5rem;
-    }
+  .ctaBox h2 {
+    font-size: 1.5rem;
+  }
 
-    .projectLink {
-        width: 100%;
-        justify-content: center;
-    }
+  .projectLink {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 576px) {
-    .title {
-        font-size: 1.5rem;
-    }
+  .title {
+    font-size: 1.5rem;
+  }
 
-    .headerContent {
-        padding: 0 1rem;
-    }
+  .headerContent {
+    padding: 0 1rem;
+  }
 
-    .sliderControls {
-        gap: 1rem;
-    }
+  .sliderControls {
+    gap: 1rem;
+  }
 
-    .sliderBtn {
-        width: 40px;
-        height: 40px;
-    }
+  .sliderBtn {
+    width: 40px;
+    height: 40px;
+  }
 
-    .description {
-        padding: 1.5rem;
-        font-size: 0.95rem;
-    }
+  .description {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
 }

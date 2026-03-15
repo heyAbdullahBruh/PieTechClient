@@ -1,6 +1,6 @@
 "use client";
-import { useEffect } from "react";
 import { useThemeStore } from "@/store";
+import { useEffect } from "react";
 
 const ThemeProvider = ({ children }) => {
   const { theme } = useThemeStore();

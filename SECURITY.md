@@ -11,6 +11,7 @@ This security policy applies to all code in this repository.
 ## What to Include
 
 When reporting a vulnerability, please include:
+
 - Description of the issue
 - Steps to reproduce
 - Potential impact

@@ -1,38 +1,38 @@
 "use client";
 
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import Underline from "@tiptap/extension-underline";
-import TextAlign from "@tiptap/extension-text-align";
-import Image from "@tiptap/extension-image";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
+import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
+import TextAlign from "@tiptap/extension-text-align";
+import Underline from "@tiptap/extension-underline";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import styles from "./textEditor.module.css";
 
 import {
-  faBold,
-  faItalic,
-  faUnderline,
-  faStrikethrough,
-  faListUl,
-  faListOl,
-  faQuoteRight,
-  faUndo,
-  faRedo,
-  faCode,
-  faHeading,
-  faAlignLeft,
-  faAlignRight,
   faAlignCenter,
   faAlignJustify,
+  faAlignLeft,
+  faAlignRight,
+  faBold,
+  faCode,
+  faHeading,
   faImage,
-  faMinus,
+  faItalic,
   faLink,
-  faUnlink,
+  faListOl,
+  faListUl,
+  faMinus,
   faParagraph,
+  faQuoteRight,
+  faRedo,
+  faStrikethrough,
+  faUnderline,
+  faUndo,
+  faUnlink,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const MenuBar = ({ editor }) => {
   const [imgUrl, setImgUrl] = useState("");
