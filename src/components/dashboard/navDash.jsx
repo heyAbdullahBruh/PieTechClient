@@ -49,7 +49,7 @@ const DashboardNav = () => {
   return (
     <nav className={styles.dashboardNav}>
       <section className={styles.dashNavSec}>
-        <div className={styles.navBrand}>PieTech HQ</div>
+        <div className={styles.navBrand}>Pietenium HQ</div>
         <ul className={styles.navList}>
           <li>
             <Link href="/dashboard" className={styles.navLink}>

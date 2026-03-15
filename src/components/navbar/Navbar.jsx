@@ -74,7 +74,7 @@ const Navbar = () => {
       <div className={styles.navContainer}>
         <div className={styles.navLogo}>
           <Link href={"/"}>
-            <h1>Pietenium!</h1>
+            <h1>Pietenium</h1>
           </Link>
         </div>
 
