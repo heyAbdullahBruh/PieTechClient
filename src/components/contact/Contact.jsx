@@ -18,6 +18,7 @@ import { z } from "zod";
 import ToastP from "../popupToast/ToastP";
 import SmallLoad from "../smallLaoding/smallLoad";
 import styles from "./contact.module.css";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -39,8 +40,7 @@ const Contact = () => {
   const { errors, validate, handleBlur, getFieldProps, clearError } =
     useFormValidation(contactSchema);
 
-  const { theme } = useThemeStore();
-  const [captchaValue, setCaptchaValue] = useState(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -51,10 +51,12 @@ const Contact = () => {
       return;
     }
 
-    if (!captchaValue) {
-      showToast("Please complete the reCAPTCHA", false);
+    if (!executeRecaptcha) {
+      showToast("Verification Failed", false);
       return;
     }
+
+    const token = await executeRecaptcha("contact_form");
 
     startLoading();
     try {
@@ -68,7 +70,7 @@ const Contact = () => {
           subject,
           name,
           message,
-          token: captchaValue,
+          token
         }),
       });
       const data = await res.json();
@@ -227,14 +229,6 @@ const Contact = () => {
               {errors.message && (
                 <span className={styles.errorText}>{errors.message}</span>
               )}
-            </div>
-
-            <div className={styles.captchaRow}>
-              <ReCAPTCHA
-                sitekey={"6LfHa1QrAAAAAKFl-0u7ogSQ9DgbI0OPITwXJivc"}
-                onChange={(token) => setCaptchaValue(token)}
-                theme={theme}
-              />
             </div>
 
             <button

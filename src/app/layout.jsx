@@ -5,6 +5,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GoogleContext from "@/components/context/GoogleContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,17 +120,19 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider>
-          <ScrollToTop />
-          <nav>
-            <Navbar />
-          </nav>
-          <main>{children}</main>
-          <CookiePopup />
-          <footer>
-            <Footer />
-          </footer>
-        </ThemeProvider>
+        <GoogleContext>
+          <ThemeProvider>
+            <ScrollToTop />
+            <nav>
+              <Navbar />
+            </nav>
+            <main>{children}</main>
+            <CookiePopup />
+            <footer>
+              <Footer />
+            </footer>
+          </ThemeProvider>
+        </GoogleContext>
       </body>
     </html>
   );
