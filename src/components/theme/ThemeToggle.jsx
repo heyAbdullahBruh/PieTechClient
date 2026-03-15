@@ -1,8 +1,8 @@
 "use client";
-import { useEffect } from "react";
 import { useThemeStore } from "@/store";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useThemeStore();

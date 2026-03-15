@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import styles from "./cookiePopup.module.css";
-import { api } from "@/data/api";
-import SmallLoad from "../smallLaoding/smallLoad";
 import { useLoading } from "@/customHooks";
+import { api } from "@/data/api";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import SmallLoad from "../smallLaoding/smallLoad";
+import styles from "./cookiePopup.module.css";
 
 export default function CookiePopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -52,11 +52,13 @@ export default function CookiePopup() {
   return (
     <div className={styles.popupWrapper}>
       <div className={styles.popupBox}>
-        <h4>🍪 PieTech Cookie Consent</h4>
+        <h4>
+          <span>🍪</span> Pietenium Cookie Consent
+        </h4>
         <p>
-          We use cookies to improve your experience and analyze traffic on
-          PieTech. By clicking &quot;Accept&quot;, you consent to our cookie
-          policy. To learn more, see our full policy.
+          We use cookies to enhance your experience and analyze platform
+          traffic. By clicking &quot;Accept&quot;, you consent to our premium
+          browsing policy.
         </p>
         <div className={styles.buttonGroup}>
           {loading ? (

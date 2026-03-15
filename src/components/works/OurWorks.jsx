@@ -1,22 +1,24 @@
 "use client";
-import { useEffect, useState, useCallback, useMemo } from "react";
-import styles from "./ourWorks.module.css";
-import { api } from "@/data/api";
-import Link from "next/link";
-import { slugify } from "@/utility/slugify";
-import HomeCardSkeleton from "../skeleton/HomeCardSkeleton";
-import Image from "next/image";
 import { useLoading } from "@/customHooks";
-import Pagination from "../pagination/Pagination";
 import usePagination from "@/customHooks/usePagination";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { api } from "@/data/api";
+import { slugify } from "@/utility/slugify";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import Link from "next/link";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import Pagination from "../pagination/Pagination";
+import HomeCardSkeleton from "../skeleton/HomeCardSkeleton";
+import styles from "./ourWorks.module.css";
 
 const OurWorks = () => {
   const [projects, setProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const { loading, startLoading, stopLoading } = useLoading();
-  const { currentPage, paginate, totalPages } = usePagination({ initialLimit: 6 });
+  const { currentPage, paginate, totalPages } = usePagination({
+    initialLimit: 6,
+  });
 
   const fetchProjData = useCallback(async () => {
     startLoading();
@@ -44,7 +46,7 @@ const OurWorks = () => {
       (proj) =>
         proj.title?.toLowerCase().includes(query) ||
         proj.description?.toLowerCase().includes(query) ||
-        proj.category?.toLowerCase().includes(query)
+        proj.category?.toLowerCase().includes(query),
     );
   }, [projects, searchQuery]);
 
@@ -116,7 +118,10 @@ const OurWorks = () => {
                 const { _id, title, thumbnail } = data;
                 const titleLink = slugify(title);
                 return (
-                  <div className={`${styles.projTemp} animate-slide-up`} key={_id}>
+                  <div
+                    className={`${styles.projTemp} animate-slide-up`}
+                    key={_id}
+                  >
                     <div className={styles.imgWrapper}>
                       <Image
                         src={thumbnail?.photo}
@@ -148,7 +153,7 @@ const OurWorks = () => {
             </div>
           )}
           {paginatedProjects.length > 0 && (
-            <Pagination 
+            <Pagination
               currentPage={currentPage}
               totalPages={total}
               onPageChange={paginate}

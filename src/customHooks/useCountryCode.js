@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export const useCountryCode = (defaultCode = "+1") => {
   const [countryCode, setCountryCode] = useState(defaultCode);

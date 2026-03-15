@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export const useToast = (
   initialState = { trigger: false, message: "", type: true },
