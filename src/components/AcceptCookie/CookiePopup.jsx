@@ -52,11 +52,13 @@ export default function CookiePopup() {
   return (
     <div className={styles.popupWrapper}>
       <div className={styles.popupBox}>
-        <h4>🍪 Pietenium Cookie Consent</h4>
+        <h4>
+          <span>🍪</span> Pietenium Cookie Consent
+        </h4>
         <p>
-          We use cookies to improve your experience and analyze traffic on
-          Pietenium. By clicking &quot;Accept&quot;, you consent to our cookie
-          policy. To learn more, see our full policy.
+          We use cookies to enhance your experience and analyze platform
+          traffic. By clicking &quot;Accept&quot;, you consent to our premium
+          browsing policy.
         </p>
         <div className={styles.buttonGroup}>
           {loading ? (
